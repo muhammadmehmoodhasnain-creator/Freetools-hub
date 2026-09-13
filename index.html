@@ -1,2027 +1,2986 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>FreeTools Hub — Free Online Calculators & Tools</title>
-  <meta name="description" content="Free, fast and easy online calculators including BMI, loan, percentage, discount, tip, age, time, temperature and unit converters.">
-  <meta name="keywords" content="free calculators, online calculator, BMI calculator, loan calculator, percentage calculator, discount calculator, tip calculator, age calculator, kg to lbs">
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #f5f5f7;
-      background:
-        radial-gradient(circle at 15% 10%, rgba(255, 193, 7, 0.10), transparent 28%),
-        radial-gradient(circle at 85% 20%, rgba(120, 80, 255, 0.12), transparent 30%),
-        radial-gradient(circle at 50% 80%, rgba(0, 180, 255, 0.07), transparent 32%),
-        #07080c;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.035;
-      background-image:
-        linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px);
-      background-size: 55px 55px;
-      mask-image: linear-gradient(to bottom, black, transparent 75%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input,
-    select {
-      font: inherit;
-    }
-
-    .container {
-      width: min(1180px, calc(100% - 36px));
-      margin: auto;
-    }
-
-    /* NAVBAR */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      background: rgba(7,8,12,.78);
-      backdrop-filter: blur(18px);
-    }
-
-    .nav-inner {
-      height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -.5px;
-    }
-
-    .logo-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      color: #08090c;
-      background: linear-gradient(135deg, #ffe08a, #f5b82e);
-      box-shadow: 0 8px 30px rgba(245,184,46,.22);
-    }
-
-    .logo span {
-      color: #f7c955;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 26px;
-      color: #aaaab2;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .nav-links a {
-      transition: .2s;
-    }
-
-    .nav-links a:hover {
-      color: #fff;
-    }
-
-    /* HERO */
-
-    .hero {
-      text-align: center;
-      padding: 82px 0 42px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border: 1px solid rgba(247,201,85,.20);
-      border-radius: 999px;
-      color: #f8d978;
-      background: rgba(247,201,85,.06);
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 23px;
-    }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #f7c955;
-      box-shadow: 0 0 12px #f7c955;
-    }
-
-    h1 {
-      font-size: clamp(44px, 7vw, 78px);
-      line-height: .98;
-      letter-spacing: -4px;
-      margin-bottom: 20px;
-    }
-
-    .gradient-text {
-      background: linear-gradient(100deg, #fff 15%, #f7c955 50%, #bca8ff 90%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      max-width: 620px;
-      margin: auto;
-      color: #999ba5;
-      line-height: 1.7;
-      font-size: 16px;
-    }
-
-    /* FANCY SEARCH */
-
-    .search-wrapper {
-      position: relative;
-      width: min(720px, 100%);
-      margin: 36px auto 0;
-      z-index: 20;
-    }
-
-    .search-box {
-      position: relative;
-      display: flex;
-      align-items: center;
-      padding: 7px;
-      border-radius: 20px;
-      background: linear-gradient(135deg,
-        rgba(255,255,255,.11),
-        rgba(255,255,255,.035)
-      );
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow:
-        0 20px 60px rgba(0,0,0,.35),
-        inset 0 1px rgba(255,255,255,.06);
-      transition: .25s ease;
-    }
-
-    .search-wrapper:focus-within .search-box {
-      border-color: rgba(247,201,85,.55);
-      box-shadow:
-        0 0 0 4px rgba(247,201,85,.07),
-        0 25px 70px rgba(0,0,0,.45),
-        0 0 35px rgba(247,201,85,.08);
-      transform: translateY(-1px);
-    }
-
-    .search-icon {
-      width: 48px;
-      height: 48px;
-      flex: 0 0 48px;
-      display: grid;
-      place-items: center;
-      color: #f7c955;
-      font-size: 21px;
-    }
-
-    #toolSearch {
-      width: 100%;
-      height: 50px;
-      border: 0;
-      outline: 0;
-      color: white;
-      background: transparent;
-      font-size: 16px;
-    }
-
-    #toolSearch::placeholder {
-      color: #777982;
-    }
-
-    .search-button {
-      border: 0;
-      cursor: pointer;
-      min-width: 108px;
-      height: 48px;
-      padding: 0 18px;
-      border-radius: 14px;
-      font-weight: 800;
-      color: #0a0b0e;
-      background: linear-gradient(135deg, #ffe18b, #f3b72f);
-      box-shadow: 0 8px 24px rgba(247,201,85,.16);
-      transition: .2s;
-    }
-
-    .search-button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 30px rgba(247,201,85,.25);
-    }
-
-    .search-hint {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 13px;
-      color: #656771;
-      font-size: 12px;
-    }
-
-    .search-hint kbd {
-      padding: 2px 7px;
-      border: 1px solid #303139;
-      border-radius: 5px;
-      color: #9b9da5;
-      background: #111218;
-    }
-
-    .search-results {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: calc(100% + 10px);
-      display: none;
-      overflow: hidden;
-      padding: 8px;
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 18px;
-      background: rgba(15,16,22,.96);
-      backdrop-filter: blur(22px);
-      box-shadow: 0 25px 70px rgba(0,0,0,.55);
-      text-align: left;
-    }
-
-    .search-results.show {
-      display: block;
-      animation: dropIn .16s ease-out;
-    }
-
-    @keyframes dropIn {
-      from {
-        opacity: 0;
-        transform: translateY(-5px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .search-result {
-      width: 100%;
-      border: 0;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      padding: 13px;
-      border-radius: 12px;
-      color: white;
-      background: transparent;
-      text-align: left;
-      transition: .15s;
-    }
-
-    .search-result:hover {
-      background: rgba(255,255,255,.07);
-    }
-
-    .result-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 11px;
-      display: grid;
-      place-items: center;
-      background: rgba(247,201,85,.09);
-      color: #f7c955;
-      font-size: 18px;
-    }
-
-    .result-title {
-      font-weight: 750;
-      font-size: 14px;
-    }
-
-    .result-description {
-      margin-top: 2px;
-      color: #777983;
-      font-size: 12px;
-    }
-
-    /* AD */
-
-    .ad-slot {
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 28px 0;
-      border: 1px dashed rgba(255,255,255,.08);
-      border-radius: 17px;
-      color: #555761;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      background: rgba(255,255,255,.012);
-    }
-
-    /* SECTION */
-
-    .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      margin: 65px 0 22px;
-    }
-
-    .section-heading h2 {
-      font-size: 27px;
-      letter-spacing: -1px;
-    }
-
-    .section-heading p {
-      color: #686a73;
-      font-size: 13px;
-    }
-
-    /* CALCULATOR GRID */
-
-    .calculator-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .calculator-card {
-      scroll-margin-top: 100px;
-      padding: 22px;
-      border: 1px solid rgba(255,255,255,.075);
-      border-radius: 22px;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
-      box-shadow: 0 15px 45px rgba(0,0,0,.16);
-      transition: .25s ease;
-    }
-
-    .calculator-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(247,201,85,.22);
-      box-shadow: 0 22px 55px rgba(0,0,0,.25);
-    }
-
-    .calculator-card.highlight {
-      animation: highlightCard 1.3s ease;
-    }
-
-    @keyframes highlightCard {
-      0%, 100% {
-        border-color: rgba(255,255,255,.075);
-        box-shadow: 0 15px 45px rgba(0,0,0,.16);
-      }
-      35% {
-        border-color: rgba(247,201,85,.85);
-        box-shadow: 0 0 40px rgba(247,201,85,.18);
-      }
-    }
-
-    .tool-top {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      margin-bottom: 20px;
-    }
-
-    .tool-icon {
-      width: 45px;
-      height: 45px;
-      display: grid;
-      place-items: center;
-      flex: 0 0 45px;
-      border-radius: 14px;
-      color: #f7c955;
-      background: rgba(247,201,85,.08);
-      font-size: 20px;
-    }
-
-    .tool-title {
-      font-size: 17px;
-      font-weight: 800;
-    }
-
-    .tool-subtitle {
-      margin-top: 3px;
-      color: #6f717b;
-      font-size: 11px;
-    }
-
-    .field {
-      margin-top: 12px;
-    }
-
-    .field label {
-      display: block;
-      margin-bottom: 6px;
-      color: #92949d;
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .field input,
-    .field select {
-      width: 100%;
-      height: 45px;
-      padding: 0 13px;
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 11px;
-      outline: 0;
-      color: #fff;
-      background: rgba(0,0,0,.22);
-      transition: .2s;
-    }
-
-    .field input:focus,
-    .field select:focus {
-      border-color: rgba(247,201,85,.5);
-      box-shadow: 0 0 0 3px rgba(247,201,85,.06);
-    }
-
-    .field select option {
-      color: #111;
-    }
-
-    .calculate-btn {
-      width: 100%;
-      height: 44px;
-      margin-top: 14px;
-      border: 0;
-      border-radius: 11px;
-      cursor: pointer;
-      color: #090a0d;
-      font-weight: 800;
-      background: linear-gradient(135deg, #ffe18b, #f2b72e);
-      transition: .2s;
-    }
-
-    .calculate-btn:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.04);
-    }
-
-    .result {
-      min-height: 22px;
-      margin-top: 12px;
-      padding: 10px 12px;
-      border-radius: 10px;
-      color: #f5d36c;
-      background: rgba(247,201,85,.055);
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
-    /* FEATURES */
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin: 35px 0 65px;
-    }
-
-    .feature {
-      padding: 22px;
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 18px;
-      background: rgba(255,255,255,.018);
-    }
-
-    .feature-icon {
-      font-size: 23px;
-      margin-bottom: 11px;
-    }
-
-    .feature h3 {
-      font-size: 15px;
-      margin-bottom: 6px;
-    }
-
-    .feature p {
-      color: #777983;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid rgba(255,255,255,.07);
-      padding: 38px 0;
-      margin-top: 20px;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-
-    .footer-copy {
-      color: #60616a;
-      font-size: 12px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 20px;
-      color: #777983;
-      font-size: 12px;
-    }
-
-    .footer-links a:hover {
-      color: white;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 1050px) {
-      .calculator-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .features {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .container {
-        width: min(100% - 24px, 580px);
-      }
-
-      .nav-inner {
-        height: 64px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 62px 0 28px;
-      }
-
-      h1 {
-        font-size: 47px;
-        letter-spacing: -2.5px;
-      }
-
-      .hero p {
-        font-size: 14px;
-      }
-
-      .search-box {
-        border-radius: 17px;
-      }
-
-      .search-button {
-        min-width: 52px;
-        width: 52px;
-        padding: 0;
-        font-size: 0;
-      }
-
-      .search-button::after {
-        content: "→";
-        font-size: 20px;
-      }
-
-      .search-hint {
-        font-size: 11px;
-      }
-
-      .section-heading {
-        display: block;
-      }
-
-      .section-heading p {
-        margin-top: 5px;
-      }
-
-      .calculator-grid,
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      .calculator-card {
-        padding: 19px;
-      }
-
-      .footer-inner {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FreeTools Hub — Free Online Calculators & Tools</title>
+
+<meta name="description" content="Free online calculators and converters for loans, birthdays, age, tips, discounts, percentages, weight, temperature, time, dates and more.">
+<meta name="keywords" content="free calculator, online calculators, loan calculator, birthday calculator, age calculator, tip calculator, discount calculator, percentage calculator, kg to lbs, lbs to kg, temperature converter">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  color:#f5f5f7;
+  background:
+    radial-gradient(circle at 12% 5%,rgba(255,193,7,.11),transparent 28%),
+    radial-gradient(circle at 88% 12%,rgba(120,80,255,.12),transparent 30%),
+    radial-gradient(circle at 50% 70%,rgba(0,170,255,.07),transparent 32%),
+    #07080c;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.025;
+  background-image:
+    linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+  background-size:55px 55px;
+  mask-image:linear-gradient(to bottom,black,transparent 75%);
+}
+
+button,input,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(1180px,calc(100% - 36px));
+  margin:auto;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  background:rgba(7,8,12,.78);
+  backdrop-filter:blur(18px);
+}
+
+.nav-inner{
+  height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:20px;
+  font-weight:850;
+  letter-spacing:-.6px;
+}
+
+.logo-icon{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  color:#08090c;
+  background:linear-gradient(135deg,#ffe08a,#f5b82e);
+  box-shadow:0 8px 30px rgba(245,184,46,.22);
+}
+
+.logo span{
+  color:#f7c955;
+}
+
+.nav-links{
+  display:flex;
+  gap:26px;
+  color:#aaaab2;
+  font-size:14px;
+  font-weight:650;
+}
+
+.nav-links a{
+  transition:.2s;
+}
+
+.nav-links a:hover{
+  color:#fff;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  text-align:center;
+  padding:82px 0 42px;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 14px;
+  border:1px solid rgba(247,201,85,.20);
+  border-radius:999px;
+  color:#f8d978;
+  background:rgba(247,201,85,.06);
+  font-size:12px;
+  font-weight:750;
+  margin-bottom:23px;
+}
+
+.badge-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#f7c955;
+  box-shadow:0 0 12px #f7c955;
+}
+
+h1{
+  font-size:clamp(44px,7vw,78px);
+  line-height:.98;
+  letter-spacing:-4px;
+  margin-bottom:20px;
+}
+
+.gradient-text{
+  background:linear-gradient(100deg,#fff 15%,#f7c955 50%,#bca8ff 90%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:#999ba5;
+  line-height:1.7;
+  font-size:16px;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-wrapper{
+  position:relative;
+  width:min(740px,100%);
+  margin:36px auto 0;
+  z-index:20;
+}
+
+.search-box{
+  position:relative;
+  display:flex;
+  align-items:center;
+  padding:7px;
+  border-radius:20px;
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.11),
+    rgba(255,255,255,.035)
+  );
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.35),
+    inset 0 1px rgba(255,255,255,.06);
+  transition:.25s ease;
+}
+
+.search-wrapper:focus-within .search-box{
+  border-color:rgba(247,201,85,.55);
+  box-shadow:
+    0 0 0 4px rgba(247,201,85,.07),
+    0 25px 70px rgba(0,0,0,.45),
+    0 0 35px rgba(247,201,85,.08);
+  transform:translateY(-1px);
+}
+
+.search-icon{
+  width:48px;
+  height:48px;
+  flex:0 0 48px;
+  display:grid;
+  place-items:center;
+  color:#f7c955;
+  font-size:24px;
+}
+
+#toolSearch{
+  width:100%;
+  height:50px;
+  border:0;
+  outline:0;
+  color:#fff;
+  background:transparent;
+  font-size:16px;
+}
+
+#toolSearch::placeholder{
+  color:#777982;
+}
+
+.search-button{
+  border:0;
+  min-width:108px;
+  height:48px;
+  padding:0 18px;
+  border-radius:14px;
+  font-weight:850;
+  color:#090a0d;
+  background:linear-gradient(135deg,#ffe18b,#f3b72f);
+  box-shadow:0 8px 24px rgba(247,201,85,.16);
+  transition:.2s;
+}
+
+.search-button:hover{
+  transform:translateY(-1px);
+  box-shadow:0 12px 30px rgba(247,201,85,.25);
+}
+
+.search-hint{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:13px;
+  color:#656771;
+  font-size:12px;
+}
+
+.search-hint kbd{
+  padding:3px 8px;
+  border:1px solid #303139;
+  border-radius:6px;
+  color:#9b9da5;
+  background:#111218;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.search-hint kbd:hover{
+  color:#f7c955;
+  border-color:rgba(247,201,85,.35);
+}
+
+.search-results{
+  position:absolute;
+  left:0;
+  right:0;
+  top:calc(100% + 10px);
+  display:none;
+  overflow:hidden;
+  padding:8px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  background:rgba(15,16,22,.97);
+  backdrop-filter:blur(22px);
+  box-shadow:0 25px 70px rgba(0,0,0,.55);
+  text-align:left;
+}
+
+.search-results.show{
+  display:block;
+  animation:dropIn .16s ease-out;
+}
+
+@keyframes dropIn{
+  from{
+    opacity:0;
+    transform:translateY(-5px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.search-result{
+  width:100%;
+  border:0;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:13px;
+  border-radius:12px;
+  color:#fff;
+  background:transparent;
+  text-align:left;
+  transition:.15s;
+}
+
+.search-result:hover{
+  background:rgba(255,255,255,.07);
+}
+
+.result-icon{
+  width:39px;
+  height:39px;
+  border-radius:11px;
+  display:grid;
+  place-items:center;
+  flex:0 0 39px;
+  background:rgba(247,201,85,.09);
+  color:#f7c955;
+  font-size:18px;
+}
+
+.result-title{
+  font-weight:800;
+  font-size:14px;
+}
+
+.result-description{
+  margin-top:3px;
+  color:#777983;
+  font-size:12px;
+}
+
+
+/* =========================
+   ADS
+========================= */
+
+.ad-slot{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:28px 0;
+  border:1px dashed rgba(255,255,255,.075);
+  border-radius:17px;
+  color:#50525b;
+  font-size:10px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  background:rgba(255,255,255,.012);
+}
+
+.calculator-ad{
+  min-height:52px;
+  margin:17px 0 0;
+  border:1px dashed rgba(255,255,255,.055);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#44464e;
+  font-size:9px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section-heading{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  margin:65px 0 22px;
+}
+
+.section-heading h2{
+  font-size:27px;
+  letter-spacing:-1px;
+}
+
+.section-heading p{
+  color:#686a73;
+  font-size:13px;
+}
+
+
+/* =========================
+   CALCULATOR GRID
+========================= */
+
+.calculator-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.calculator-card{
+  scroll-margin-top:100px;
+  padding:22px;
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:22px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.018)
+    );
+  box-shadow:0 15px 45px rgba(0,0,0,.16);
+  transition:.25s ease;
+}
+
+.calculator-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(247,201,85,.22);
+  box-shadow:0 22px 55px rgba(0,0,0,.25);
+}
+
+.calculator-card.highlight{
+  animation:highlightCard 1.3s ease;
+}
+
+@keyframes highlightCard{
+  0%,100%{
+    border-color:rgba(255,255,255,.075);
+    box-shadow:0 15px 45px rgba(0,0,0,.16);
+  }
+  35%{
+    border-color:rgba(247,201,85,.85);
+    box-shadow:0 0 40px rgba(247,201,85,.18);
+  }
+}
+
+.tool-top{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  margin-bottom:20px;
+}
+
+.tool-icon{
+  width:45px;
+  height:45px;
+  display:grid;
+  place-items:center;
+  flex:0 0 45px;
+  border-radius:14px;
+  color:#f7c955;
+  background:rgba(247,201,85,.08);
+  font-size:20px;
+}
+
+.tool-title{
+  font-size:17px;
+  font-weight:800;
+}
+
+.tool-subtitle{
+  margin-top:3px;
+  color:#6f717b;
+  font-size:11px;
+}
+
+.field{
+  margin-top:12px;
+}
+
+.field label{
+  display:block;
+  margin-bottom:6px;
+  color:#92949d;
+  font-size:12px;
+  font-weight:650;
+}
+
+.field input,
+.field select{
+  width:100%;
+  height:45px;
+  padding:0 13px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:11px;
+  outline:0;
+  color:#fff;
+  background:rgba(0,0,0,.22);
+  transition:.2s;
+}
+
+.field input:focus,
+.field select:focus{
+  border-color:rgba(247,201,85,.5);
+  box-shadow:0 0 0 3px rgba(247,201,85,.06);
+}
+
+.field select option{
+  color:#111;
+}
+
+.calculate-btn{
+  width:100%;
+  height:44px;
+  margin-top:14px;
+  border:0;
+  border-radius:11px;
+  color:#090a0d;
+  font-weight:850;
+  background:linear-gradient(135deg,#ffe18b,#f2b72e);
+  transition:.2s;
+}
+
+.calculate-btn:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.04);
+}
+
+.result{
+  min-height:40px;
+  margin-top:12px;
+  padding:10px 12px;
+  border-radius:10px;
+  color:#f5d36c;
+  background:rgba(247,201,85,.055);
+  font-size:13px;
+  font-weight:700;
+  line-height:1.45;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin:35px 0 65px;
+}
+
+.feature{
+  padding:22px;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:18px;
+  background:rgba(255,255,255,.018);
+}
+
+.feature-icon{
+  font-size:23px;
+  margin-bottom:11px;
+}
+
+.feature h3{
+  font-size:15px;
+  margin-bottom:6px;
+}
+
+.feature p{
+  color:#777983;
+  font-size:12px;
+  line-height:1.6;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  border-top:1px solid rgba(255,255,255,.07);
+  padding:38px 0;
+  margin-top:20px;
+}
+
+.footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:25px;
+}
+
+.footer-copy{
+  color:#60616a;
+  font-size:12px;
+}
+
+.footer-links{
+  display:flex;
+  gap:20px;
+  color:#777983;
+  font-size:12px;
+}
+
+.footer-links a:hover{
+  color:#fff;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1050px){
+
+  .calculator-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .features{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:700px){
+
+  .container{
+    width:min(100% - 24px,580px);
+  }
+
+  .nav-inner{
+    height:64px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero{
+    padding:62px 0 28px;
+  }
+
+  h1{
+    font-size:47px;
+    letter-spacing:-2.5px;
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+
+  .search-box{
+    border-radius:17px;
+  }
+
+  .search-button{
+    min-width:52px;
+    width:52px;
+    padding:0;
+    font-size:0;
+  }
+
+  .search-button::after{
+    content:"→";
+    font-size:20px;
+  }
+
+  .search-hint{
+    font-size:11px;
+  }
+
+  .section-heading{
+    display:block;
+  }
+
+  .section-heading p{
+    margin-top:5px;
+  }
+
+  .calculator-grid,
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .calculator-card{
+    padding:19px;
+  }
+
+  .footer-inner{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+    animation:none!important;
+    transition:none!important;
+  }
+}
+</style>
 </head>
+
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <div class="container nav-inner">
-      <a href="#" class="logo">
-        <div class="logo-icon">✦</div>
-        FreeTools <span>Hub</span>
-      </a>
 
-      <div class="nav-links">
-        <a href="#tools">Calculators</a>
-        <a href="#features">Why FreeTools</a>
-        <a href="#footer">About</a>
-      </div>
-    </div>
-  </nav>
+<!-- =========================
+     NAVBAR
+========================= -->
 
+<nav>
+  <div class="container nav-inner">
 
-  <!-- HERO -->
-  <main>
-    <section class="hero">
-      <div class="container">
+    <a href="#" class="logo">
+      <div class="logo-icon">✦</div>
+      FreeTools <span>Hub</span>
+    </a>
 
-        <div class="badge">
-          <span class="badge-dot"></span>
-          Fast • Free • No Sign-Up
-        </div>
-
-        <h1>
-          Smart Tools.<br>
-          <span class="gradient-text">Simple Life.</span>
-        </h1>
-
-        <p>
-          Powerful online calculators and useful everyday tools —
-          simple enough for anyone, fast enough for everyone.
-        </p>
-
-
-        <!-- FANCY SEARCH -->
-        <div class="search-wrapper">
-
-          <div class="search-box">
-            <div class="search-icon">⌕</div>
-
-            <input
-              id="toolSearch"
-              type="text"
-              autocomplete="off"
-              placeholder="What do you want to calculate?"
-              aria-label="Search calculators"
-            >
-
-            <button class="search-button" id="searchButton">
-              Find Tool
-            </button>
-          </div>
-
-          <div class="search-hint">
-            Try
-            <kbd>kg to lbs</kbd>
-            <kbd>loan</kbd>
-            <kbd>tip</kbd>
-            <kbd>discount</kbd>
-          </div>
-
-          <div class="search-results" id="searchResults"></div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- TOP AD SLOT -->
-    <div class="container">
-      <div class="ad-slot">
-        Advertisement
-      </div>
+    <div class="nav-links">
+      <a href="#tools">Calculators</a>
+      <a href="#features">Why FreeTools</a>
+      <a href="#footer">About</a>
     </div>
 
+  </div>
+</nav>
 
-    <!-- TOOLS -->
-    <section id="tools" class="container">
 
-      <div class="section-heading">
-        <div>
-          <h2>Popular Calculators</h2>
-          <p>Everything you need, in one place.</p>
-        </div>
-      </div>
 
+<!-- =========================
+     HERO
+========================= -->
 
-      <div class="calculator-grid">
+<main>
 
+<section class="hero">
 
-        <!-- KG TO LBS -->
-        <article class="calculator-card" id="kg-lbs" data-title="KG to LBS Converter">
-          <div class="tool-top">
-            <div class="tool-icon">⚖</div>
-            <div>
-              <div class="tool-title">KG → LBS</div>
-              <div class="tool-subtitle">Weight converter</div>
-            </div>
-          </div>
+  <div class="container">
 
-          <div class="field">
-            <label>Kilograms</label>
-            <input id="kgInput" type="number" placeholder="e.g. 55">
-          </div>
-
-          <button class="calculate-btn" onclick="convertKg()">
-            Convert
-          </button>
-
-          <div class="result" id="kgResult">
-            Your result will appear here.
-          </div>
-        </article>
-
-
-        <!-- LBS TO KG -->
-        <article class="calculator-card" id="lbs-kg" data-title="LBS to KG Converter">
-          <div class="tool-top">
-            <div class="tool-icon">⚖</div>
-            <div>
-              <div class="tool-title">LBS → KG</div>
-              <div class="tool-subtitle">Weight converter</div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Pounds</label>
-            <input id="lbsInput" type="number" placeholder="e.g. 150">
-          </div>
-
-          <button class="calculate-btn" onclick="convertLbs()">
-            Convert
-          </button>
-
-          <div class="result" id="lbsResult">
-            Your result will appear here.
-          </div>
-        </article>
-
-
-        <!-- LOAN -->
-        <article class="calculator-card" id="loan" data-title="Loan Payment Calculator">
-          <div class="tool-top">
-            <div class="tool-icon">💰</div>
-            <div>
-              <div class="tool-title">Loan Calculator</div>
-              <div class="tool-subtitle">Monthly payment</div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Loan Amount ($)</label>
-            <input id="loanAmount" type="number" placeholder="e.g. 10000">
-          </div>
-
-          <div class="field">
-            <label>Interest Rate (%)</label>
-            <input id="loanRate" type="number" placeholder="e.g. 7">
-          </div>
-
-          <div class="field">
-            <label>Loan Term (years)</label>
-            <input id="loanYears" type="number" placeholder="e.g. 5">
-          </div>
-
-          <button class="calculate-btn" onclick="calculateLoan()">
-            Calculate Payment
-          </button>
-
-          <div class="result" id="loanResult">
-            Your result will appear here.
-          </div>
-        </article>
-
-
-        <!-- BMI -->
-        <article class="calculator-card" id="bmi" data-title="BMI Calculator">
-          <div class="tool-top">
-            <div class="tool-icon">📊</div>
-            <div>
-              <div class="tool-title">BMI Calculator</div>
-              <div class="tool-subtitle">Body mass index</div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Weight (kg)</label>
-            <input id="bmiWeight" type="number" placeholder="e.g. 70">
-          </div>
-
-          <div class="field">
-            <label>Height (cm)</label>
-            <input id="bmiHeight" type="number" placeholder="e.g. 175">
-          </div>
-
-          <button class="calculate-btn" onclick="calculateBMI()">
-            Calculate BMI
-          </button>
-
-          <div class="result" id="bmiResult">
-            Your result will appear here.
-          </div>
-        </article>
-
-
-        <!-- TIME -->
-        <article class="calculator-card" id="time" data-title="Time Calculator">
-          <div class="tool-top">
-            <div class="tool-icon">⏱</div>
-            <div>
-              <div class="tool-title">Time Calculator</div>
-              <div class="tool-subtitle">Add hours & minutes</div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Hours</label>
-            <input id="timeHours" type="number" placeholder="e.g. 8">
-          </div>
-
-          <div class="field">
-            <label>Minutes</label>
-            <input id="timeMinutes" type="number" placeholder="e.g. 45">
-          </div>
-
-          <div class="field">
-            <label>Extra minutes</label>
-            <input id="timeExtra" type="number" placeholder="e.g. 30">
-          </div>
-
-          <button class="calculate-btn" onclick="calculateTime()">
-            Calculate Time
-          </button>
-
-          <div class="result" id="timeResult">
-            Your result will appear here.
-          </div>
-        </article>
-
-
-        <!-- PERCENTAGE -->
-        <article class="calculator-card" id="percentage" data-title="Percentage Calculator">
-          <div class="tool-top">
-            <div class="tool-icon">％</div>
-            <div>
-              <div class="tool-title">Percentage</div>
-              <div class="tool-subtitle">Find percentages</div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Percentage (%)</label>
-            <input id="percentValue" type="number" placeholder="e.g. 20">
-          </div>
-
-          <div class="field">
-            <label>Number</label>
-            <input id="percentNumber" type="number" placeholder="e.g. 250">
-          </div>
-
-          <button class="calculate-btn" onclick="calculatePercentage()">
-            Calculate
-          </button>
-
-          <div class="result" id="percentResult">
-            Your result will appear here.
-          </div>
-        </article>
-
-
-        <!-- DISCOUNT -->
-        <article class="calculator-card" id="discount" data-title="Discount Calculator">
-          <div class="tool-top">
-            <div class="tool-icon">🏷</div>
-            <div>
-              <div class="tool-title">Discount</div>
-              <div class="tool-subtitle">Sale price calculator</div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Original Price ($)</label>
-            <input id="discountPrice" type="number" placeholder="e.g. 100">
-          </div>
-
-          <div class="field">
-            <label>Discount (%)</label>
-            <input id="discountPercent" type="number" placeholder="e.g. 25">
-          </div>
-
-          <button class="calculate-btn" onclick="calculateDiscount()">
-            Calculate
-          </button>
-
-          <div class="result" id="discountResult">
-            Your result will appear here.
-          </div>
-        </article>
-
-
-        <!-- TIP -->
-        <article class="calculator-card" id="tip" data-title="Tip Calculator">
-          <div class="tool-top">
-            <div class="tool-icon">🍽</div>
-            <div>
-              <div class="tool-title">Tip Calculator</div>
-              <div class="tool-subtitle">Restaurant tip</div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Bill Amount ($)</label>
-            <input id="tipBill" type="number" placeholder="e.g. 50">
-          </div>
-
-          <div class="field">
-            <label>Tip (%)</label>
-            <input id="tipPercent" type="number" placeholder="e.g. 20">
-          </div>
-
-          <button class="calculate-btn" onclick="calculateTip()">
-            Calculate
-          </button>
-
-          <div class="result" id="tipResult">
-            Your result will appear here.
-          </div>
-        </article>
-
-
-        <!-- AGE -->
-        <article class="calculator-card" id="age" data-title="Age Calculator">
-          <div class="tool-top">
-            <div class="tool-icon">🎂</div>
-            <div>
-              <div class="tool-title">Age Calculator</div>
-              <div class="tool-subtitle">Calculate your age</div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Date of Birth</label>
-            <input id="birthDate" type="date">
-          </div>
-
-          <button class="calculate-btn" onclick="calculateAge()">
-            Calculate Age
-          </button>
-
-          <div class="result" id="ageResult">
-            Your result will appear here.
-          </div>
-        </article>
-
-
-        <!-- TEMPERATURE -->
-        <article class="calculator-card" id="temperature" data-title="Temperature Converter">
-          <div class="tool-top">
-            <div class="tool-icon">🌡</div>
-            <div>
-              <div class="tool-title">Temperature</div>
-              <div class="tool-subtitle">°C / °F converter</div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Temperature</label>
-            <input id="tempValue" type="number" placeholder="e.g. 72">
-          </div>
-
-          <div class="field">
-            <label>Convert From</label>
-            <select id="tempUnit">
-              <option value="f">Fahrenheit</option>
-              <option value="c">Celsius</option>
-            </select>
-          </div>
-
-          <button class="calculate-btn" onclick="convertTemperature()">
-            Convert
-          </button>
-
-          <div class="result" id="tempResult">
-            Your result will appear here.
-          </div>
-        </article>
-
-
-        <!-- LENGTH -->
-        <article class="calculator-card" id="length" data-title="Length Converter">
-          <div class="tool-top">
-            <div class="tool-icon">📏</div>
-            <div>
-              <div class="tool-title">Length Converter</div>
-              <div class="tool-subtitle">Feet / meters converter</div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>Value</label>
-            <input id="lengthValue" type="number" placeholder="e.g. 10">
-          </div>
-
-          <div class="field">
-            <label>Convert From</label>
-            <select id="lengthUnit">
-              <option value="ft">Feet</option>
-              <option value="m">Meters</option>
-              <option value="in">Inches</option>
-              <option value="cm">Centimeters</option>
-            </select>
-          </div>
-
-          <button class="calculate-btn" onclick="convertLength()">
-            Convert
-          </button>
-
-          <div class="result" id="lengthResult">
-            Your result will appear here.
-          </div>
-        </article>
-
-
-        <!-- SIMPLE CALCULATOR -->
-        <article class="calculator-card" id="calculator" data-title="Basic Calculator">
-          <div class="tool-top">
-            <div class="tool-icon">➗</div>
-            <div>
-              <div class="tool-title">Basic Calculator</div>
-              <div class="tool-subtitle">Quick calculations</div>
-            </div>
-          </div>
-
-          <div class="field">
-            <label>First Number</label>
-            <input id="basicA" type="number" placeholder="e.g. 100">
-          </div>
-
-          <div class="field">
-            <label>Second Number</label>
-            <input id="basicB" type="number" placeholder="e.g. 25">
-          </div>
-
-          <div class="field">
-            <label>Operation</label>
-            <select id="basicOperation">
-              <option value="+">Addition (+)</option>
-              <option value="-">Subtraction (-)</option>
-              <option value="*">Multiplication (×)</option>
-              <option value="/">Division (÷)</option>
-            </select>
-          </div>
-
-          <button class="calculate-btn" onclick="basicCalculate()">
-            Calculate
-          </button>
-
-          <div class="result" id="basicResult">
-            Your result will appear here.
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-
-    <!-- MIDDLE AD -->
-    <div class="container">
-      <div class="ad-slot">
-        Advertisement
-      </div>
+    <div class="badge">
+      <span class="badge-dot"></span>
+      Fast • Free • No Sign-Up
     </div>
 
+    <h1>
+      Smart Tools.<br>
+      <span class="gradient-text">Simple Life.</span>
+    </h1>
 
-    <!-- FEATURES -->
-    <section id="features" class="container">
+    <p>
+      Free calculators and useful everyday tools.
+      Search for exactly what you need and get your answer instantly.
+    </p>
 
-      <div class="section-heading">
-        <div>
-          <h2>Why FreeTools Hub?</h2>
-          <p>Built to be simple, fast and useful.</p>
-        </div>
-      </div>
 
-      <div class="features">
+    <!-- SEARCH -->
 
-        <div class="feature">
-          <div class="feature-icon">⚡</div>
-          <h3>Instant Results</h3>
-          <p>
-            Get your calculation immediately without waiting or creating an account.
-          </p>
-        </div>
+    <div class="search-wrapper">
 
-        <div class="feature">
-          <div class="feature-icon">🔒</div>
-          <h3>Simple & Private</h3>
-          <p>
-            Everyday calculations happen directly in your browser.
-          </p>
-        </div>
+      <div class="search-box">
 
-        <div class="feature">
-          <div class="feature-icon">📱</div>
-          <h3>Works Everywhere</h3>
-          <p>
-            Designed for phones, tablets, laptops and desktop computers.
-          </p>
-        </div>
+        <div class="search-icon">⌕</div>
+
+        <input
+          id="toolSearch"
+          type="text"
+          autocomplete="off"
+          placeholder="Search a calculator or tool..."
+          aria-label="Search calculators"
+        >
+
+        <button
+          class="search-button"
+          id="searchButton">
+          Find Tool
+        </button>
 
       </div>
 
-    </section>
 
+      <div class="search-hint">
 
-    <!-- BOTTOM AD -->
-    <div class="container">
-      <div class="ad-slot">
-        Advertisement
-      </div>
-    </div>
+        Try
 
-  </main>
+        <kbd>birthday</kbd>
+        <kbd>loan</kbd>
+        <kbd>tip</kbd>
+        <kbd>discount</kbd>
+        <kbd>kg to lbs</kbd>
 
-
-  <!-- FOOTER -->
-  <footer id="footer">
-    <div class="container footer-inner">
-
-      <div class="footer-copy">
-        © 2026 FreeTools Hub. Free online tools for everyone.
       </div>
 
-      <div class="footer-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#tools">Calculators</a>
+
+      <div
+        class="search-results"
+        id="searchResults">
       </div>
 
     </div>
-  </footer>
+
+  </div>
+
+</section>
 
 
-  <script>
 
-    /* =========================
-       KG → LBS
-    ========================= */
+<!-- TOP AD -->
 
-    function convertKg() {
-      const kg = parseFloat(document.getElementById("kgInput").value);
-      const result = document.getElementById("kgResult");
+<div class="container">
+  <div class="ad-slot">
+    Advertisement
+  </div>
+</div>
 
-      if (isNaN(kg) || kg < 0) {
-        result.textContent = "Please enter a valid weight.";
-        return;
+
+
+<!-- =========================
+     TOOLS
+========================= -->
+
+<section id="tools" class="container">
+
+<div class="section-heading">
+
+  <div>
+    <h2>All Calculators</h2>
+    <p>Useful tools for everyday life.</p>
+  </div>
+
+</div>
+
+
+<div class="calculator-grid">
+
+
+<!-- =========================
+     KG → LBS
+========================= -->
+
+<article
+  class="calculator-card"
+  id="kg-lbs"
+  data-title="KG to LBS Converter">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">⚖</div>
+
+    <div>
+      <div class="tool-title">KG → LBS</div>
+      <div class="tool-subtitle">Weight converter</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Kilograms</label>
+    <input id="kgInput" type="number" placeholder="e.g. 55">
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="convertKg()">
+    Convert
+  </button>
+
+  <div class="result" id="kgResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     LBS → KG
+========================= -->
+
+<article
+  class="calculator-card"
+  id="lbs-kg"
+  data-title="LBS to KG Converter">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">⚖</div>
+
+    <div>
+      <div class="tool-title">LBS → KG</div>
+      <div class="tool-subtitle">Weight converter</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Pounds</label>
+    <input id="lbsInput" type="number" placeholder="e.g. 150">
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="convertLbs()">
+    Convert
+  </button>
+
+  <div class="result" id="lbsResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     LOAN
+========================= -->
+
+<article
+  class="calculator-card"
+  id="loan"
+  data-title="Loan Payment Calculator">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">💰</div>
+
+    <div>
+      <div class="tool-title">Loan Calculator</div>
+      <div class="tool-subtitle">Monthly payment</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Loan Amount ($)</label>
+    <input id="loanAmount" type="number" placeholder="e.g. 10000">
+  </div>
+
+  <div class="field">
+    <label>Interest Rate (%)</label>
+    <input id="loanRate" type="number" placeholder="e.g. 7">
+  </div>
+
+  <div class="field">
+    <label>Loan Term (years)</label>
+    <input id="loanYears" type="number" placeholder="e.g. 5">
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="calculateLoan()">
+    Calculate Payment
+  </button>
+
+  <div class="result" id="loanResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     BMI
+========================= -->
+
+<article
+  class="calculator-card"
+  id="bmi"
+  data-title="BMI Calculator">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">📊</div>
+
+    <div>
+      <div class="tool-title">BMI Calculator</div>
+      <div class="tool-subtitle">Body mass index</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Weight (kg)</label>
+    <input id="bmiWeight" type="number" placeholder="e.g. 70">
+  </div>
+
+  <div class="field">
+    <label>Height (cm)</label>
+    <input id="bmiHeight" type="number" placeholder="e.g. 175">
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="calculateBMI()">
+    Calculate BMI
+  </button>
+
+  <div class="result" id="bmiResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     AGE
+========================= -->
+
+<article
+  class="calculator-card"
+  id="age"
+  data-title="Age Calculator">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">🎂</div>
+
+    <div>
+      <div class="tool-title">Age Calculator</div>
+      <div class="tool-subtitle">Calculate your age</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Date of Birth</label>
+    <input id="ageBirthDate" type="date">
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="calculateAge()">
+    Calculate Age
+  </button>
+
+  <div class="result" id="ageResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     BIRTHDAY
+========================= -->
+
+<article
+  class="calculator-card"
+  id="birthday"
+  data-title="Birthday Calculator">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">🎉</div>
+
+    <div>
+      <div class="tool-title">Birthday Calculator</div>
+      <div class="tool-subtitle">Find your next birthday</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Date of Birth</label>
+    <input id="birthdayDate" type="date">
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="calculateBirthday()">
+    Find Birthday
+  </button>
+
+  <div class="result" id="birthdayResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     TIP
+========================= -->
+
+<article
+  class="calculator-card"
+  id="tip"
+  data-title="Tip Calculator">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">🍽</div>
+
+    <div>
+      <div class="tool-title">Tip Calculator</div>
+      <div class="tool-subtitle">Restaurant tip</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Bill Amount ($)</label>
+    <input id="tipBill" type="number" placeholder="e.g. 50">
+  </div>
+
+  <div class="field">
+    <label>Tip (%)</label>
+    <input id="tipPercent" type="number" placeholder="e.g. 20">
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="calculateTip()">
+    Calculate
+  </button>
+
+  <div class="result" id="tipResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     DISCOUNT
+========================= -->
+
+<article
+  class="calculator-card"
+  id="discount"
+  data-title="Discount Calculator">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">🏷</div>
+
+    <div>
+      <div class="tool-title">Discount Calculator</div>
+      <div class="tool-subtitle">Sale price & savings</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Original Price ($)</label>
+    <input id="discountPrice" type="number" placeholder="e.g. 100">
+  </div>
+
+  <div class="field">
+    <label>Discount (%)</label>
+    <input id="discountPercent" type="number" placeholder="e.g. 25">
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="calculateDiscount()">
+    Calculate
+  </button>
+
+  <div class="result" id="discountResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     PERCENTAGE
+========================= -->
+
+<article
+  class="calculator-card"
+  id="percentage"
+  data-title="Percentage Calculator">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">％</div>
+
+    <div>
+      <div class="tool-title">Percentage</div>
+      <div class="tool-subtitle">Find percentages</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Percentage (%)</label>
+    <input id="percentValue" type="number" placeholder="e.g. 20">
+  </div>
+
+  <div class="field">
+    <label>Number</label>
+    <input id="percentNumber" type="number" placeholder="e.g. 250">
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="calculatePercentage()">
+    Calculate
+  </button>
+
+  <div class="result" id="percentResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     TEMPERATURE
+========================= -->
+
+<article
+  class="calculator-card"
+  id="temperature"
+  data-title="Temperature Converter">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">🌡</div>
+
+    <div>
+      <div class="tool-title">Temperature</div>
+      <div class="tool-subtitle">Celsius & Fahrenheit</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Temperature</label>
+    <input id="tempValue" type="number" placeholder="e.g. 72">
+  </div>
+
+  <div class="field">
+    <label>Convert From</label>
+
+    <select id="tempUnit">
+      <option value="f">Fahrenheit</option>
+      <option value="c">Celsius</option>
+    </select>
+
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="convertTemperature()">
+    Convert
+  </button>
+
+  <div class="result" id="tempResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     LENGTH
+========================= -->
+
+<article
+  class="calculator-card"
+  id="length"
+  data-title="Length Converter">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">📏</div>
+
+    <div>
+      <div class="tool-title">Length Converter</div>
+      <div class="tool-subtitle">Feet, meters, inches & cm</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Value</label>
+    <input id="lengthValue" type="number" placeholder="e.g. 10">
+  </div>
+
+  <div class="field">
+    <label>Convert From</label>
+
+    <select id="lengthUnit">
+
+      <option value="ft">Feet</option>
+      <option value="m">Meters</option>
+      <option value="in">Inches</option>
+      <option value="cm">Centimeters</option>
+
+    </select>
+
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="convertLength()">
+    Convert
+  </button>
+
+  <div class="result" id="lengthResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     TIME
+========================= -->
+
+<article
+  class="calculator-card"
+  id="time"
+  data-title="Time Calculator">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">⏱</div>
+
+    <div>
+      <div class="tool-title">Time Calculator</div>
+      <div class="tool-subtitle">Add hours & minutes</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Hours</label>
+    <input id="timeHours" type="number" placeholder="e.g. 8">
+  </div>
+
+  <div class="field">
+    <label>Minutes</label>
+    <input id="timeMinutes" type="number" placeholder="e.g. 45">
+  </div>
+
+  <div class="field">
+    <label>Extra Minutes</label>
+    <input id="timeExtra" type="number" placeholder="e.g. 30">
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="calculateTime()">
+    Calculate Time
+  </button>
+
+  <div class="result" id="timeResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     BASIC CALCULATOR
+========================= -->
+
+<article
+  class="calculator-card"
+  id="calculator"
+  data-title="Basic Calculator">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">➗</div>
+
+    <div>
+      <div class="tool-title">Basic Calculator</div>
+      <div class="tool-subtitle">Quick everyday math</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>First Number</label>
+    <input id="basicA" type="number" placeholder="e.g. 100">
+  </div>
+
+  <div class="field">
+    <label>Second Number</label>
+    <input id="basicB" type="number" placeholder="e.g. 25">
+  </div>
+
+  <div class="field">
+    <label>Operation</label>
+
+    <select id="basicOperation">
+
+      <option value="+">Addition (+)</option>
+      <option value="-">Subtraction (-)</option>
+      <option value="*">Multiplication (×)</option>
+      <option value="/">Division (÷)</option>
+
+    </select>
+
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="basicCalculate()">
+    Calculate
+  </button>
+
+  <div class="result" id="basicResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     DATE DIFFERENCE
+========================= -->
+
+<article
+  class="calculator-card"
+  id="date-difference"
+  data-title="Date Difference Calculator">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">📅</div>
+
+    <div>
+      <div class="tool-title">Date Difference</div>
+      <div class="tool-subtitle">Days between two dates</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Start Date</label>
+    <input id="dateStart" type="date">
+  </div>
+
+  <div class="field">
+    <label>End Date</label>
+    <input id="dateEnd" type="date">
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="calculateDateDifference()">
+    Calculate
+  </button>
+
+  <div class="result" id="dateResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+
+<!-- =========================
+     SPLIT BILL
+========================= -->
+
+<article
+  class="calculator-card"
+  id="split-bill"
+  data-title="Split Bill Calculator">
+
+  <div class="tool-top">
+
+    <div class="tool-icon">👥</div>
+
+    <div>
+      <div class="tool-title">Split Bill</div>
+      <div class="tool-subtitle">Split a bill between people</div>
+    </div>
+
+  </div>
+
+  <div class="field">
+    <label>Total Bill ($)</label>
+    <input id="splitBill" type="number" placeholder="e.g. 120">
+  </div>
+
+  <div class="field">
+    <label>Number of People</label>
+    <input id="splitPeople" type="number" placeholder="e.g. 4">
+  </div>
+
+  <div class="field">
+    <label>Tip (%)</label>
+    <input id="splitTip" type="number" placeholder="e.g. 20">
+  </div>
+
+  <button
+    class="calculate-btn"
+    onclick="calculateSplitBill()">
+    Split Bill
+  </button>
+
+  <div class="result" id="splitResult">
+    Your result will appear here.
+  </div>
+
+  <div class="calculator-ad">
+    Advertisement
+  </div>
+
+</article>
+
+
+</div>
+
+</section>
+
+
+
+<!-- MIDDLE AD -->
+
+<div class="container">
+
+  <div class="ad-slot">
+    Advertisement
+  </div>
+
+</div>
+
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section id="features" class="container">
+
+  <div class="section-heading">
+
+    <div>
+      <h2>Why FreeTools Hub?</h2>
+      <p>Simple tools designed for everyday use.</p>
+    </div>
+
+  </div>
+
+
+  <div class="features">
+
+    <div class="feature">
+
+      <div class="feature-icon">⚡</div>
+
+      <h3>Instant Results</h3>
+
+      <p>
+        Calculate answers instantly without creating an account.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">🔒</div>
+
+      <h3>Simple & Private</h3>
+
+      <p>
+        Everyday calculations happen directly in your browser.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <div class="feature-icon">📱</div>
+
+      <h3>Works Everywhere</h3>
+
+      <p>
+        Designed for phones, tablets, laptops and desktop computers.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- BOTTOM AD -->
+
+<div class="container">
+
+  <div class="ad-slot">
+    Advertisement
+  </div>
+
+</div>
+
+</main>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer id="footer">
+
+  <div class="container footer-inner">
+
+    <div class="footer-copy">
+      © 2026 FreeTools Hub. Free online tools for everyone.
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#tools">Calculators</a>
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================
+   KG → LBS
+========================= */
+
+function convertKg(){
+
+  const kg=parseFloat(
+    document.getElementById("kgInput").value
+  );
+
+  const result=document.getElementById("kgResult");
+
+  if(isNaN(kg)||kg<0){
+
+    result.textContent="Please enter a valid weight.";
+
+    return;
+  }
+
+  const lbs=kg*2.2046226218;
+
+  result.textContent=
+    `${kg} kg = ${lbs.toFixed(2)} lbs`;
+}
+
+
+
+/* =========================
+   LBS → KG
+========================= */
+
+function convertLbs(){
+
+  const lbs=parseFloat(
+    document.getElementById("lbsInput").value
+  );
+
+  const result=document.getElementById("lbsResult");
+
+  if(isNaN(lbs)||lbs<0){
+
+    result.textContent="Please enter a valid weight.";
+
+    return;
+  }
+
+  const kg=lbs/2.2046226218;
+
+  result.textContent=
+    `${lbs} lbs = ${kg.toFixed(2)} kg`;
+}
+
+
+
+/* =========================
+   LOAN
+========================= */
+
+function calculateLoan(){
+
+  const amount=parseFloat(
+    document.getElementById("loanAmount").value
+  );
+
+  const annualRate=parseFloat(
+    document.getElementById("loanRate").value
+  );
+
+  const years=parseFloat(
+    document.getElementById("loanYears").value
+  );
+
+  const result=document.getElementById("loanResult");
+
+  if(
+    isNaN(amount)||
+    isNaN(annualRate)||
+    isNaN(years)||
+    amount<=0||
+    annualRate<0||
+    years<=0
+  ){
+
+    result.textContent=
+      "Please enter valid loan information.";
+
+    return;
+  }
+
+  const months=years*12;
+
+  const monthlyRate=
+    annualRate/100/12;
+
+  let payment;
+
+  if(monthlyRate===0){
+
+    payment=amount/months;
+
+  }else{
+
+    payment=
+      amount*
+      monthlyRate*
+      Math.pow(1+monthlyRate,months)/
+      (Math.pow(1+monthlyRate,months)-1);
+
+  }
+
+  result.textContent=
+    `$${payment.toLocaleString("en-US",{
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    })} / month`;
+}
+
+
+
+/* =========================
+   BMI
+========================= */
+
+function calculateBMI(){
+
+  const weight=parseFloat(
+    document.getElementById("bmiWeight").value
+  );
+
+  const height=parseFloat(
+    document.getElementById("bmiHeight").value
+  );
+
+  const result=document.getElementById("bmiResult");
+
+  if(
+    isNaN(weight)||
+    isNaN(height)||
+    weight<=0||
+    height<=0
+  ){
+
+    result.textContent=
+      "Please enter valid height and weight.";
+
+    return;
+  }
+
+  const meters=height/100;
+
+  const bmi=
+    weight/(meters*meters);
+
+  result.textContent=
+    `BMI: ${bmi.toFixed(2)}`;
+}
+
+
+
+/* =========================
+   AGE
+========================= */
+
+function calculateAge(){
+
+  const value=
+    document.getElementById("ageBirthDate").value;
+
+  const result=
+    document.getElementById("ageResult");
+
+  if(!value){
+
+    result.textContent=
+      "Please select your birth date.";
+
+    return;
+  }
+
+  const birth=
+    new Date(value+"T00:00:00");
+
+  const today=
+    new Date();
+
+  if(birth>today){
+
+    result.textContent=
+      "Birth date cannot be in the future.";
+
+    return;
+  }
+
+  let years=
+    today.getFullYear()-
+    birth.getFullYear();
+
+  let months=
+    today.getMonth()-
+    birth.getMonth();
+
+  let days=
+    today.getDate()-
+    birth.getDate();
+
+  if(days<0){
+
+    months--;
+
+    const previousMonth=
+      new Date(
+        today.getFullYear(),
+        today.getMonth(),
+        0
+      );
+
+    days+=previousMonth.getDate();
+  }
+
+  if(months<0){
+
+    years--;
+
+    months+=12;
+  }
+
+  result.textContent=
+    `${years} years, ${months} months, ${days} days`;
+}
+
+
+
+/* =========================
+   BIRTHDAY
+========================= */
+
+function calculateBirthday(){
+
+  const value=
+    document.getElementById("birthdayDate").value;
+
+  const result=
+    document.getElementById("birthdayResult");
+
+  if(!value){
+
+    result.textContent=
+      "Please select your birth date.";
+
+    return;
+  }
+
+  const birth=
+    new Date(value+"T00:00:00");
+
+  const today=
+    new Date();
+
+  if(birth>today){
+
+    result.textContent=
+      "Birth date cannot be in the future.";
+
+    return;
+  }
+
+  let nextBirthday=
+    new Date(
+      today.getFullYear(),
+      birth.getMonth(),
+      birth.getDate()
+    );
+
+  if(nextBirthday<today){
+
+    nextBirthday=
+      new Date(
+        today.getFullYear()+1,
+        birth.getMonth(),
+        birth.getDate()
+      );
+  }
+
+  const difference=
+    nextBirthday.getTime()-today.getTime();
+
+  const days=
+    Math.ceil(
+      difference/(1000*60*60*24)
+    );
+
+  const birthdayDay=
+    nextBirthday.toLocaleDateString(
+      "en-US",
+      {weekday:"long"}
+    );
+
+  const birthdayText=
+    nextBirthday.toLocaleDateString(
+      "en-US",
+      {
+        month:"long",
+        day:"numeric",
+        year:"numeric"
       }
+    );
 
-      const lbs = kg * 2.2046226218;
+  result.textContent=
+    `${days} days until your birthday • ${birthdayText} (${birthdayDay})`;
+}
 
-      result.textContent =
-        `${kg} kg = ${lbs.toFixed(2)} lbs`;
+
+
+/* =========================
+   TIP
+========================= */
+
+function calculateTip(){
+
+  const bill=parseFloat(
+    document.getElementById("tipBill").value
+  );
+
+  const percent=parseFloat(
+    document.getElementById("tipPercent").value
+  );
+
+  const result=
+    document.getElementById("tipResult");
+
+  if(
+    isNaN(bill)||
+    isNaN(percent)||
+    bill<0||
+    percent<0
+  ){
+
+    result.textContent=
+      "Please enter valid values.";
+
+    return;
+  }
+
+  const tip=
+    bill*percent/100;
+
+  const total=
+    bill+tip;
+
+  result.textContent=
+    `Tip: $${tip.toFixed(2)} • Total: $${total.toFixed(2)}`;
+}
+
+
+
+/* =========================
+   DISCOUNT
+========================= */
+
+function calculateDiscount(){
+
+  const price=parseFloat(
+    document.getElementById("discountPrice").value
+  );
+
+  const discount=parseFloat(
+    document.getElementById("discountPercent").value
+  );
+
+  const result=
+    document.getElementById("discountResult");
+
+  if(
+    isNaN(price)||
+    isNaN(discount)||
+    price<0||
+    discount<0
+  ){
+
+    result.textContent=
+      "Please enter valid values.";
+
+    return;
+  }
+
+  const savings=
+    price*discount/100;
+
+  const finalPrice=
+    price-savings;
+
+  result.textContent=
+    `Save $${savings.toFixed(2)} • Final price: $${finalPrice.toFixed(2)}`;
+}
+
+
+
+/* =========================
+   PERCENTAGE
+========================= */
+
+function calculatePercentage(){
+
+  const percentage=parseFloat(
+    document.getElementById("percentValue").value
+  );
+
+  const number=parseFloat(
+    document.getElementById("percentNumber").value
+  );
+
+  const result=
+    document.getElementById("percentResult");
+
+  if(
+    isNaN(percentage)||
+    isNaN(number)
+  ){
+
+    result.textContent=
+      "Please enter valid numbers.";
+
+    return;
+  }
+
+  const answer=
+    percentage/100*number;
+
+  result.textContent=
+    `${percentage}% of ${number} = ${answer.toFixed(2)}`;
+}
+
+
+
+/* =========================
+   TEMPERATURE
+========================= */
+
+function convertTemperature(){
+
+  const value=parseFloat(
+    document.getElementById("tempValue").value
+  );
+
+  const unit=
+    document.getElementById("tempUnit").value;
+
+  const result=
+    document.getElementById("tempResult");
+
+  if(isNaN(value)){
+
+    result.textContent=
+      "Please enter a temperature.";
+
+    return;
+  }
+
+  if(unit==="f"){
+
+    const c=
+      (value-32)*5/9;
+
+    result.textContent=
+      `${value}°F = ${c.toFixed(2)}°C`;
+
+  }else{
+
+    const f=
+      value*9/5+32;
+
+    result.textContent=
+      `${value}°C = ${f.toFixed(2)}°F`;
+
+  }
+}
+
+
+
+/* =========================
+   LENGTH
+========================= */
+
+function convertLength(){
+
+  const value=parseFloat(
+    document.getElementById("lengthValue").value
+  );
+
+  const unit=
+    document.getElementById("lengthUnit").value;
+
+  const result=
+    document.getElementById("lengthResult");
+
+  if(isNaN(value)){
+
+    result.textContent=
+      "Please enter a length.";
+
+    return;
+  }
+
+  let meters;
+
+  if(unit==="ft")
+    meters=value*0.3048;
+
+  if(unit==="m")
+    meters=value;
+
+  if(unit==="in")
+    meters=value*0.0254;
+
+  if(unit==="cm")
+    meters=value/100;
+
+  result.textContent=
+    `${value} ${unit} = ${meters.toFixed(4)} meters`;
+}
+
+
+
+/* =========================
+   TIME
+========================= */
+
+function calculateTime(){
+
+  const hours=
+    parseInt(
+      document.getElementById("timeHours").value
+    )||0;
+
+  const minutes=
+    parseInt(
+      document.getElementById("timeMinutes").value
+    )||0;
+
+  const extra=
+    parseInt(
+      document.getElementById("timeExtra").value
+    )||0;
+
+  const result=
+    document.getElementById("timeResult");
+
+  if(
+    hours<0||
+    minutes<0||
+    extra<0
+  ){
+
+    result.textContent=
+      "Please enter positive values.";
+
+    return;
+  }
+
+  const totalMinutes=
+    hours*60+
+    minutes+
+    extra;
+
+  const finalHours=
+    Math.floor(totalMinutes/60);
+
+  const finalMinutes=
+    totalMinutes%60;
+
+  result.textContent=
+    `${finalHours} hours ${finalMinutes} minutes`;
+}
+
+
+
+/* =========================
+   BASIC CALCULATOR
+========================= */
+
+function basicCalculate(){
+
+  const a=parseFloat(
+    document.getElementById("basicA").value
+  );
+
+  const b=parseFloat(
+    document.getElementById("basicB").value
+  );
+
+  const operation=
+    document.getElementById("basicOperation").value;
+
+  const result=
+    document.getElementById("basicResult");
+
+  if(isNaN(a)||isNaN(b)){
+
+    result.textContent=
+      "Please enter both numbers.";
+
+    return;
+  }
+
+  let answer;
+
+  if(operation==="+")
+    answer=a+b;
+
+  if(operation==="-")
+    answer=a-b;
+
+  if(operation==="*")
+    answer=a*b;
+
+  if(operation==="/"){
+
+    if(b===0){
+
+      result.textContent=
+        "Cannot divide by zero.";
+
+      return;
     }
 
+    answer=a/b;
+  }
 
-    /* =========================
-       LBS → KG
-    ========================= */
-
-    function convertLbs() {
-      const lbs = parseFloat(document.getElementById("lbsInput").value);
-      const result = document.getElementById("lbsResult");
-
-      if (isNaN(lbs) || lbs < 0) {
-        result.textContent = "Please enter a valid weight.";
-        return;
-      }
-
-      const kg = lbs / 2.2046226218;
-
-      result.textContent =
-        `${lbs} lbs = ${kg.toFixed(2)} kg`;
-    }
-
-
-    /* =========================
-       LOAN
-    ========================= */
-
-    function calculateLoan() {
-      const amount = parseFloat(document.getElementById("loanAmount").value);
-      const annualRate = parseFloat(document.getElementById("loanRate").value);
-      const years = parseFloat(document.getElementById("loanYears").value);
-      const result = document.getElementById("loanResult");
-
-      if (
-        isNaN(amount) ||
-        isNaN(annualRate) ||
-        isNaN(years) ||
-        amount <= 0 ||
-        annualRate < 0 ||
-        years <= 0
-      ) {
-        result.textContent = "Please enter valid loan information.";
-        return;
-      }
-
-      const months = years * 12;
-      const monthlyRate = annualRate / 100 / 12;
-
-      let payment;
-
-      if (monthlyRate === 0) {
-        payment = amount / months;
-      } else {
-        payment =
-          amount *
-          monthlyRate *
-          Math.pow(1 + monthlyRate, months) /
-          (Math.pow(1 + monthlyRate, months) - 1);
-      }
-
-      result.textContent =
-        `$${payment.toLocaleString("en-US", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        })} / month`;
-    }
+  result.textContent=
+    `Result: ${answer}`;
+}
 
 
-    /* =========================
-       BMI
-    ========================= */
-
-    function calculateBMI() {
-      const weight = parseFloat(document.getElementById("bmiWeight").value);
-      const heightCm = parseFloat(document.getElementById("bmiHeight").value);
-      const result = document.getElementById("bmiResult");
-
-      if (
-        isNaN(weight) ||
-        isNaN(heightCm) ||
-        weight <= 0 ||
-        heightCm <= 0
-      ) {
-        result.textContent = "Please enter valid height and weight.";
-        return;
-      }
 
-      const heightM = heightCm / 100;
-      const bmi = weight / (heightM * heightM);
+/* =========================
+   DATE DIFFERENCE
+========================= */
 
-      result.textContent = `BMI: ${bmi.toFixed(2)}`;
-    }
+function calculateDateDifference(){
 
+  const startValue=
+    document.getElementById("dateStart").value;
 
-    /* =========================
-       TIME
-    ========================= */
+  const endValue=
+    document.getElementById("dateEnd").value;
 
-    function calculateTime() {
-      const hours =
-        parseInt(document.getElementById("timeHours").value) || 0;
+  const result=
+    document.getElementById("dateResult");
 
-      const minutes =
-        parseInt(document.getElementById("timeMinutes").value) || 0;
+  if(!startValue||!endValue){
 
-      const extra =
-        parseInt(document.getElementById("timeExtra").value) || 0;
+    result.textContent=
+      "Please select both dates.";
 
-      if (hours < 0 || minutes < 0 || extra < 0) {
-        document.getElementById("timeResult").textContent =
-          "Please enter positive values.";
-        return;
-      }
+    return;
+  }
 
-      const totalMinutes = hours * 60 + minutes + extra;
+  const start=
+    new Date(startValue+"T00:00:00");
 
-      const finalHours = Math.floor(totalMinutes / 60);
-      const finalMinutes = totalMinutes % 60;
+  const end=
+    new Date(endValue+"T00:00:00");
 
-      document.getElementById("timeResult").textContent =
-        `${finalHours} hours ${finalMinutes} minutes`;
-    }
+  const difference=
+    Math.abs(
+      end.getTime()-start.getTime()
+    );
 
+  const days=
+    Math.round(
+      difference/(1000*60*60*24)
+    );
 
-    /* =========================
-       PERCENTAGE
-    ========================= */
+  result.textContent=
+    `${days} days between the dates`;
+}
 
-    function calculatePercentage() {
-      const percentage =
-        parseFloat(document.getElementById("percentValue").value);
 
-      const number =
-        parseFloat(document.getElementById("percentNumber").value);
-
-      const result = document.getElementById("percentResult");
-
-      if (
-        isNaN(percentage) ||
-        isNaN(number)
-      ) {
-        result.textContent = "Please enter valid numbers.";
-        return;
-      }
-
-      const answer = (percentage / 100) * number;
-
-      result.textContent =
-        `${percentage}% of ${number} = ${answer.toFixed(2)}`;
-    }
-
-
-    /* =========================
-       DISCOUNT
-    ========================= */
-
-    function calculateDiscount() {
-      const price =
-        parseFloat(document.getElementById("discountPrice").value);
-
-      const discount =
-        parseFloat(document.getElementById("discountPercent").value);
-
-      const result =
-        document.getElementById("discountResult");
-
-      if (
-        isNaN(price) ||
-        isNaN(discount) ||
-        price < 0 ||
-        discount < 0
-      ) {
-        result.textContent = "Please enter valid values.";
-        return;
-      }
-
-      const savings = price * discount / 100;
-      const finalPrice = price - savings;
-
-      result.textContent =
-        `You save $${savings.toFixed(2)} • Final price: $${finalPrice.toFixed(2)}`;
-    }
-
-
-    /* =========================
-       TIP
-    ========================= */
-
-    function calculateTip() {
-      const bill =
-        parseFloat(document.getElementById("tipBill").value);
-
-      const percentage =
-        parseFloat(document.getElementById("tipPercent").value);
-
-      const result =
-        document.getElementById("tipResult");
-
-      if (
-        isNaN(bill) ||
-        isNaN(percentage) ||
-        bill < 0 ||
-        percentage < 0
-      ) {
-        result.textContent = "Please enter valid values.";
-        return;
-      }
-
-      const tip = bill * percentage / 100;
-      const total = bill + tip;
-
-      result.textContent =
-        `Tip: $${tip.toFixed(2)} • Total: $${total.toFixed(2)}`;
-    }
-
-
-    /* =========================
-       AGE
-    ========================= */
-
-    function calculateAge() {
-      const birthInput =
-        document.getElementById("birthDate").value;
-
-      const result =
-        document.getElementById("ageResult");
-
-      if (!birthInput) {
-        result.textContent = "Please select your birth date.";
-        return;
-      }
-
-      const birthDate = new Date(birthInput + "T00:00:00");
-      const today = new Date();
-
-      if (birthDate > today) {
-        result.textContent = "Birth date cannot be in the future.";
-        return;
-      }
-
-      let years =
-        today.getFullYear() - birthDate.getFullYear();
-
-      const monthDifference =
-        today.getMonth() - birthDate.getMonth();
-
-      if (
-        monthDifference < 0 ||
-        (
-          monthDifference === 0 &&
-          today.getDate() < birthDate.getDate()
-        )
-      ) {
-        years--;
-      }
-
-      result.textContent =
-        `You are ${years} years old.`;
-    }
-
-
-    /* =========================
-       TEMPERATURE
-    ========================= */
-
-    function convertTemperature() {
-      const value =
-        parseFloat(document.getElementById("tempValue").value);
-
-      const unit =
-        document.getElementById("tempUnit").value;
-
-      const result =
-        document.getElementById("tempResult");
-
-      if (isNaN(value)) {
-        result.textContent = "Please enter a temperature.";
-        return;
-      }
-
-      if (unit === "f") {
-        const c = (value - 32) * 5 / 9;
-
-        result.textContent =
-          `${value}°F = ${c.toFixed(2)}°C`;
-      } else {
-        const f = value * 9 / 5 + 32;
-
-        result.textContent =
-          `${value}°C = ${f.toFixed(2)}°F`;
-      }
-    }
-
-
-    /* =========================
-       LENGTH
-    ========================= */
-
-    function convertLength() {
-      const value =
-        parseFloat(document.getElementById("lengthValue").value);
-
-      const unit =
-        document.getElementById("lengthUnit").value;
-
-      const result =
-        document.getElementById("lengthResult");
-
-      if (isNaN(value)) {
-        result.textContent = "Please enter a length.";
-        return;
-      }
-
-      let meters;
-
-      if (unit === "ft") {
-        meters = value * 0.3048;
-      }
-
-      if (unit === "m") {
-        meters = value;
-      }
-
-      if (unit === "in") {
-        meters = value * 0.0254;
-      }
-
-      if (unit === "cm") {
-        meters = value / 100;
-      }
-
-      result.textContent =
-        `${value} ${unit} = ${meters.toFixed(4)} meters`;
-    }
-
-
-    /* =========================
-       BASIC CALCULATOR
-    ========================= */
-
-    function basicCalculate() {
-      const a =
-        parseFloat(document.getElementById("basicA").value);
-
-      const b =
-        parseFloat(document.getElementById("basicB").value);
-
-      const operation =
-        document.getElementById("basicOperation").value;
-
-      const result =
-        document.getElementById("basicResult");
-
-      if (isNaN(a) || isNaN(b)) {
-        result.textContent = "Please enter both numbers.";
-        return;
-      }
-
-      let answer;
-
-      if (operation === "+") answer = a + b;
-      if (operation === "-") answer = a - b;
-      if (operation === "*") answer = a * b;
-
-      if (operation === "/") {
-        if (b === 0) {
-          result.textContent = "Cannot divide by zero.";
+
+/* =========================
+   SPLIT BILL
+========================= */
+
+function calculateSplitBill(){
+
+  const bill=parseFloat(
+    document.getElementById("splitBill").value
+  );
+
+  const people=parseInt(
+    document.getElementById("splitPeople").value
+  );
+
+  const tip=parseFloat(
+    document.getElementById("splitTip").value
+  );
+
+  const result=
+    document.getElementById("splitResult");
+
+  if(
+    isNaN(bill)||
+    isNaN(people)||
+    isNaN(tip)||
+    bill<0||
+    people<=0||
+    tip<0
+  ){
+
+    result.textContent=
+      "Please enter valid values.";
+
+    return;
+  }
+
+  const tipAmount=
+    bill*tip/100;
+
+  const total=
+    bill+tipAmount;
+
+  const each=
+    total/people;
+
+  result.textContent=
+    `Total: $${total.toFixed(2)} • Each person: $${each.toFixed(2)}`;
+}
+
+
+
+/* =========================
+   SMART SEARCH DATABASE
+========================= */
+
+const calculators=[
+
+  {
+    id:"kg-lbs",
+    title:"KG → LBS Converter",
+    description:"Convert kilograms to pounds",
+    icon:"⚖",
+    keywords:[
+      "kg",
+      "kgs",
+      "kilogram",
+      "kilograms",
+      "lbs",
+      "pound",
+      "pounds",
+      "kg to lbs",
+      "kilograms to pounds"
+    ]
+  },
+
+  {
+    id:"lbs-kg",
+    title:"LBS → KG Converter",
+    description:"Convert pounds to kilograms",
+    icon:"⚖",
+    keywords:[
+      "lbs to kg",
+      "pounds to kg",
+      "pounds to kilograms",
+      "lb to kg"
+    ]
+  },
+
+  {
+    id:"loan",
+    title:"Loan Calculator",
+    description:"Calculate an estimated monthly loan payment",
+    icon:"💰",
+    keywords:[
+      "loan",
+      "loan payment",
+      "monthly payment",
+      "interest",
+      "finance"
+    ]
+  },
+
+  {
+    id:"bmi",
+    title:"BMI Calculator",
+    description:"Calculate body mass index",
+    icon:"📊",
+    keywords:[
+      "bmi",
+      "body mass index"
+    ]
+  },
+
+  {
+    id:"age",
+    title:"Age Calculator",
+    description:"Calculate your exact age",
+    icon:"🎂",
+    keywords:[
+      "age",
+      "how old",
+      "age calculator"
+    ]
+  },
+
+  {
+    id:"birthday",
+    title:"Birthday Calculator",
+    description:"Find your next birthday and countdown",
+    icon:"🎉",
+    keywords:[
+      "birthday",
+      "birth day",
+      "next birthday",
+      "birthday countdown",
+      "birthday calculator"
+    ]
+  },
+
+  {
+    id:"tip",
+    title:"Tip Calculator",
+    description:"Calculate restaurant tips and totals",
+    icon:"🍽",
+    keywords:[
+      "tip",
+      "tips",
+      "restaurant",
+      "gratuity"
+    ]
+  },
+
+  {
+    id:"discount",
+    title:"Discount Calculator",
+    description:"Calculate sale prices and savings",
+    icon:"🏷",
+    keywords:[
+      "discount",
+      "sale",
+      "sale price",
+      "savings",
+      "percent off"
+    ]
+  },
+
+  {
+    id:"percentage",
+    title:"Percentage Calculator",
+    description:"Find a percentage of a number",
+    icon:"％",
+    keywords:[
+      "percentage",
+      "percent",
+      "%",
+      "percentage calculator"
+    ]
+  },
+
+  {
+    id:"temperature",
+    title:"Temperature Converter",
+    description:"Convert Celsius and Fahrenheit",
+    icon:"🌡",
+    keywords:[
+      "temperature",
+      "celsius",
+      "fahrenheit",
+      "c",
+      "f",
+      "°c",
+      "°f"
+    ]
+  },
+
+  {
+    id:"length",
+    title:"Length Converter",
+    description:"Convert feet, meters, inches and centimeters",
+    icon:"📏",
+    keywords:[
+      "length",
+      "feet",
+      "foot",
+      "meters",
+      "meter",
+      "inches",
+      "inch",
+      "centimeters",
+      "cm"
+    ]
+  },
+
+  {
+    id:"time",
+    title:"Time Calculator",
+    description:"Add hours and minutes",
+    icon:"⏱",
+    keywords:[
+      "time",
+      "hours",
+      "minutes",
+      "duration",
+      "add time"
+    ]
+  },
+
+  {
+    id:"calculator",
+    title:"Basic Calculator",
+    description:"Quick everyday math",
+    icon:"➗",
+    keywords:[
+      "calculator",
+      "math",
+      "addition",
+      "subtract",
+      "multiply",
+      "divide"
+    ]
+  },
+
+  {
+    id:"date-difference",
+    title:"Date Difference Calculator",
+    description:"Find the number of days between dates",
+    icon:"📅",
+    keywords:[
+      "date difference",
+      "days between dates",
+      "date calculator",
+      "days between"
+    ]
+  },
+
+  {
+    id:"split-bill",
+    title:"Split Bill Calculator",
+    description:"Split a restaurant bill between people",
+    icon:"👥",
+    keywords:[
+      "split bill",
+      "split restaurant bill",
+      "divide bill",
+      "bill split",
+      "friends bill"
+    ]
+  }
+
+];
+
+
+
+/* =========================
+   SEARCH
+========================= */
+
+const searchInput=
+  document.getElementById("toolSearch");
+
+const searchResults=
+  document.getElementById("searchResults");
+
+const searchButton=
+  document.getElementById("searchButton");
+
+
+function searchTools(query){
+
+  query=
+    query.trim().toLowerCase();
+
+  if(!query)
+    return [];
+
+  const words=
+    query.split(/\s+/);
+
+  return calculators
+    .map(tool=>{
+
+      let score=0;
+
+      const title=
+        tool.title.toLowerCase();
+
+      const description=
+        tool.description.toLowerCase();
+
+      const keywords=
+        tool.keywords.join(" ").toLowerCase();
+
+
+      if(title===query)
+        score+=150;
+
+      if(title.includes(query))
+        score+=70;
+
+      if(keywords.includes(query))
+        score+=50;
+
+      if(description.includes(query))
+        score+=25;
+
+
+      words.forEach(word=>{
+
+        if(word.length<2)
           return;
-        }
 
-        answer = a / b;
-      }
+        if(title.includes(word))
+          score+=20;
 
-      result.textContent =
-        `Result: ${answer}`;
-    }
+        if(keywords.includes(word))
+          score+=14;
 
+        if(description.includes(word))
+          score+=7;
 
-    /* =========================
-       SMART SEARCH
-    ========================= */
-
-    const calculators = [
-      {
-        id: "kg-lbs",
-        title: "KG → LBS Converter",
-        description: "Convert kilograms to pounds",
-        icon: "⚖",
-        keywords: [
-          "kg",
-          "kgs",
-          "kilogram",
-          "kilograms",
-          "lbs",
-          "pound",
-          "pounds",
-          "weight",
-          "kg to lbs",
-          "kilograms to pounds"
-        ]
-      },
-
-      {
-        id: "lbs-kg",
-        title: "LBS → KG Converter",
-        description: "Convert pounds to kilograms",
-        icon: "⚖",
-        keywords: [
-          "lbs to kg",
-          "pounds to kg",
-          "pounds to kilograms",
-          "lb to kg"
-        ]
-      },
-
-      {
-        id: "loan",
-        title: "Loan Calculator",
-        description: "Calculate your estimated monthly payment",
-        icon: "💰",
-        keywords: [
-          "loan",
-          "loan payment",
-          "monthly payment",
-          "interest",
-          "finance",
-          "borrow"
-        ]
-      },
-
-      {
-        id: "bmi",
-        title: "BMI Calculator",
-        description: "Calculate body mass index",
-        icon: "📊",
-        keywords: [
-          "bmi",
-          "body mass index"
-        ]
-      },
-
-      {
-        id: "time",
-        title: "Time Calculator",
-        description: "Add hours and minutes",
-        icon: "⏱",
-        keywords: [
-          "time",
-          "hours",
-          "minutes",
-          "duration",
-          "add time"
-        ]
-      },
-
-      {
-        id: "percentage",
-        title: "Percentage Calculator",
-        description: "Find a percentage of a number",
-        icon: "％",
-        keywords: [
-          "percentage",
-          "percent",
-          "%",
-          "percentage calculator"
-        ]
-      },
-
-      {
-        id: "discount",
-        title: "Discount Calculator",
-        description: "Find sale prices and savings",
-        icon: "🏷",
-        keywords: [
-          "discount",
-          "sale",
-          "sale price",
-          "savings",
-          "percent off"
-        ]
-      },
-
-      {
-        id: "tip",
-        title: "Tip Calculator",
-        description: "Calculate restaurant tips",
-        icon: "🍽",
-        keywords: [
-          "tip",
-          "tips",
-          "restaurant",
-          "gratuity"
-        ]
-      },
-
-      {
-        id: "age",
-        title: "Age Calculator",
-        description: "Calculate your age from your birthday",
-        icon: "🎂",
-        keywords: [
-          "age",
-          "birthday",
-          "birth date",
-          "how old"
-        ]
-      },
-
-      {
-        id: "temperature",
-        title: "Temperature Converter",
-        description: "Convert Celsius and Fahrenheit",
-        icon: "🌡",
-        keywords: [
-          "temperature",
-          "celsius",
-          "fahrenheit",
-          "c",
-          "f",
-          "°c",
-          "°f"
-        ]
-      },
-
-      {
-        id: "length",
-        title: "Length Converter",
-        description: "Convert feet, meters, inches and centimeters",
-        icon: "📏",
-        keywords: [
-          "length",
-          "feet",
-          "foot",
-          "meters",
-          "meter",
-          "inches",
-          "inch",
-          "centimeters",
-          "cm"
-        ]
-      },
-
-      {
-        id: "calculator",
-        title: "Basic Calculator",
-        description: "Quick everyday math",
-        icon: "➗",
-        keywords: [
-          "calculator",
-          "math",
-          "addition",
-          "subtract",
-          "multiply",
-          "divide"
-        ]
-      }
-    ];
+      });
 
 
-    const searchInput =
-      document.getElementById("toolSearch");
+      return{
+        ...tool,
+        score
+      };
 
-    const searchResults =
-      document.getElementById("searchResults");
+    })
 
-    const searchButton =
-      document.getElementById("searchButton");
+    .filter(tool=>tool.score>0)
 
-
-    function searchTools(query) {
-
-      query = query.trim().toLowerCase();
-
-      if (!query) {
-        searchResults.classList.remove("show");
-        searchResults.innerHTML = "";
-        return [];
-      }
-
-      const words = query.split(/\s+/);
-
-      const matches = calculators
-        .map(tool => {
-
-          let score = 0;
-
-          const title =
-            tool.title.toLowerCase();
-
-          const description =
-            tool.description.toLowerCase();
-
-          const keywordText =
-            tool.keywords.join(" ").toLowerCase();
-
-          if (title === query) score += 100;
-
-          if (title.includes(query)) score += 50;
-
-          if (keywordText.includes(query)) score += 40;
-
-          if (description.includes(query)) score += 20;
-
-          words.forEach(word => {
-            if (word.length > 1) {
-              if (title.includes(word)) score += 15;
-              if (keywordText.includes(word)) score += 10;
-              if (description.includes(word)) score += 5;
-            }
-          });
-
-          return {
-            ...tool,
-            score
-          };
-
-        })
-        .filter(tool => tool.score > 0)
-        .sort((a, b) => b.score - a.score);
-
-      return matches;
-    }
+    .sort(
+      (a,b)=>b.score-a.score
+    );
+}
 
 
-    function showSearchResults() {
 
-      const query =
-        searchInput.value.trim();
+function showSearchResults(){
 
-      const matches =
-        searchTools(query);
+  const query=
+    searchInput.value.trim();
 
-      searchResults.innerHTML = "";
+  searchResults.innerHTML="";
 
-      if (!query) {
-        searchResults.classList.remove("show");
-        return;
-      }
+  if(!query){
 
-      if (matches.length === 0) {
+    searchResults.classList.remove("show");
 
-        searchResults.innerHTML = `
-          <div class="search-result">
-            <div class="result-icon">?</div>
-            <div>
-              <div class="result-title">No tool found</div>
-              <div class="result-description">
-                Try "loan", "tip", "kg to lbs", or "discount".
-              </div>
-            </div>
+    return;
+  }
+
+
+  const matches=
+    searchTools(query);
+
+
+  if(matches.length===0){
+
+    searchResults.innerHTML=`
+
+      <div class="search-result">
+
+        <div class="result-icon">?</div>
+
+        <div>
+
+          <div class="result-title">
+            No matching tool
           </div>
-        `;
 
-        searchResults.classList.add("show");
-        return;
-      }
-
-
-      matches.slice(0, 5).forEach(tool => {
-
-        const button =
-          document.createElement("button");
-
-        button.className = "search-result";
-
-        button.innerHTML = `
-          <div class="result-icon">${tool.icon}</div>
-          <div>
-            <div class="result-title">${tool.title}</div>
-            <div class="result-description">${tool.description}</div>
+          <div class="result-description">
+            Try birthday, loan, tip, discount or kg to lbs.
           </div>
-        `;
 
-        button.addEventListener("click", () => {
+        </div>
+
+      </div>
+
+    `;
+
+    searchResults.classList.add("show");
+
+    return;
+  }
+
+
+  matches
+    .slice(0,6)
+    .forEach(tool=>{
+
+      const button=
+        document.createElement("button");
+
+      button.className=
+        "search-result";
+
+      button.innerHTML=`
+
+        <div class="result-icon">
+          ${tool.icon}
+        </div>
+
+        <div>
+
+          <div class="result-title">
+            ${tool.title}
+          </div>
+
+          <div class="result-description">
+            ${tool.description}
+          </div>
+
+        </div>
+
+      `;
+
+
+      button.addEventListener(
+        "click",
+        ()=>{
           openCalculator(tool.id);
-        });
-
-        searchResults.appendChild(button);
-
-      });
-
-      searchResults.classList.add("show");
-    }
-
-
-    function openCalculator(id) {
-
-      const card =
-        document.getElementById(id);
-
-      if (!card) return;
-
-      searchResults.classList.remove("show");
-
-      card.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-      });
-
-      card.classList.remove("highlight");
-
-      void card.offsetWidth;
-
-      card.classList.add("highlight");
-
-      setTimeout(() => {
-        card.classList.remove("highlight");
-      }, 1400);
-    }
-
-
-    function performSearch() {
-
-      const matches =
-        searchTools(searchInput.value);
-
-      if (matches.length > 0) {
-        openCalculator(matches[0].id);
-      } else {
-        showSearchResults();
-      }
-    }
-
-
-    searchInput.addEventListener(
-      "input",
-      showSearchResults
-    );
-
-
-    searchInput.addEventListener(
-      "keydown",
-      event => {
-
-        if (event.key === "Enter") {
-          performSearch();
         }
-
-        if (event.key === "Escape") {
-          searchResults.classList.remove("show");
-        }
-
-      }
-    );
+      );
 
 
-    searchButton.addEventListener(
-      "click",
-      performSearch
-    );
-
-
-    /* SEARCH HINT CLICKS */
-
-    document.querySelectorAll(".search-hint kbd")
-      .forEach(kbd => {
-
-        kbd.style.cursor = "pointer";
-
-        kbd.addEventListener("click", () => {
-
-          searchInput.value =
-            kbd.textContent;
-
-          showSearchResults();
-
-          searchInput.focus();
-
-        });
-
-      });
-
-
-    /* CLOSE SEARCH WHEN CLICKING OUTSIDE */
-
-    document.addEventListener("click", event => {
-
-      if (
-        !event.target.closest(".search-wrapper")
-      ) {
-        searchResults.classList.remove("show");
-      }
+      searchResults.appendChild(button);
 
     });
 
-  </script>
+
+  searchResults.classList.add("show");
+}
+
+
+
+function openCalculator(id){
+
+  const card=
+    document.getElementById(id);
+
+  if(!card)
+    return;
+
+  searchResults.classList.remove("show");
+
+  card.scrollIntoView({
+    behavior:"smooth",
+    block:"center"
+  });
+
+
+  card.classList.remove("highlight");
+
+  void card.offsetWidth;
+
+  card.classList.add("highlight");
+
+
+  setTimeout(
+    ()=>{
+      card.classList.remove("highlight");
+    },
+    1400
+  );
+}
+
+
+
+function performSearch(){
+
+  const matches=
+    searchTools(searchInput.value);
+
+  if(matches.length>0){
+
+    openCalculator(matches[0].id);
+
+  }else{
+
+    showSearchResults();
+
+  }
+}
+
+
+
+searchInput.addEventListener(
+  "input",
+  showSearchResults
+);
+
+
+searchInput.addEventListener(
+  "keydown",
+  event=>{
+
+    if(event.key==="Enter")
+      performSearch();
+
+    if(event.key==="Escape")
+      searchResults.classList.remove("show");
+
+  }
+);
+
+
+searchButton.addEventListener(
+  "click",
+  performSearch
+);
+
+
+
+/* =========================
+   SEARCH EXAMPLES
+========================= */
+
+document
+  .querySelectorAll(".search-hint kbd")
+  .forEach(kbd=>{
+
+    kbd.addEventListener(
+      "click",
+      ()=>{
+
+        searchInput.value=
+          kbd.textContent;
+
+        showSearchResults();
+
+        searchInput.focus();
+
+      }
+    );
+
+  });
+
+
+
+/* =========================
+   CLOSE SEARCH
+========================= */
+
+document.addEventListener(
+  "click",
+  event=>{
+
+    if(
+      !event.target.closest(".search-wrapper")
+    ){
+
+      searchResults.classList.remove("show");
+
+    }
+
+  }
+);
+
+</script>
 
 </body>
 </html>
