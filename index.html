@@ -4,1764 +4,2572 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FreeTools Hub - Free Online Calculators</title>
-
-<meta name="description" content="Free, simple and easy-to-use online calculators.">
+<title>FreeTools Hub | Free Online Calculators</title>
+<meta name="description" content="FreeTools Hub offers fast, simple and free online calculators for everyday use.">
 
 <style>
-
-/* =========================
-   GLOBAL
-========================= */
-
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #06111f;
-  color: #f8fafc;
-  line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050914;
+    color: #ffffff;
+    overflow-x: hidden;
 }
 
-button,
-input {
-  font-family: inherit;
+/* ==============================
+   BACKGROUND
+============================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    left: -300px;
+    top: 300px;
+    border-radius: 50%;
+    background: rgba(30, 100, 255, 0.12);
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: -2;
 }
 
-button {
-  cursor: pointer;
+body::after {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    right: -300px;
+    top: 0;
+    border-radius: 50%;
+    background: rgba(255, 190, 40, 0.10);
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: -2;
 }
 
-
-/* =========================
-   NAVIGATION
-========================= */
+/* ==============================
+   NAVBAR
+============================== */
 
 .navbar {
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
-  padding: 0 7%;
+    height: 72px;
+    padding: 0 6%;
 
-  background: rgba(4, 14, 27, 0.96);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    background: rgba(4, 9, 20, 0.82);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
 
-  font-size: 24px;
-  font-weight: 800;
-  color: white;
+    color: white;
+    text-decoration: none;
+
+    font-size: 21px;
+    font-weight: 900;
 }
 
-.logo-icon {
-  color: #ffc83d;
-  font-size: 30px;
+.logo-mark {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, #ffe48a, #f59e0b);
+    color: #111827;
+
+    font-weight: 900;
 }
 
 .logo span {
-  color: #ffc83d;
+    color: #ffc83d;
 }
 
 .nav-links {
-  display: flex;
-  gap: 34px;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    gap: 28px;
 }
 
 .nav-links a {
-  color: #e5e7eb;
-  text-decoration: none;
-  font-size: 15px;
-  transition: 0.25s;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
 }
 
 .nav-links a:hover {
-  color: #ffc83d;
+    color: #ffc83d;
 }
 
-.nav-button {
-  background: #ffc83d;
-  color: #111827 !important;
+.nav-cta {
+    padding: 10px 17px;
+    border-radius: 25px;
 
-  padding: 10px 20px;
-  border-radius: 25px;
+    background: linear-gradient(135deg, #ffe48a, #f59e0b);
+    color: #111827 !important;
 
-  font-weight: bold;
+    font-weight: 800;
 }
 
-
-/* =========================
+/* ==============================
    HERO
-========================= */
+============================== */
 
 .hero {
-  min-height: 460px;
+    min-height: 660px;
 
-  display: flex;
-  align-items: center;
+    position: relative;
+    overflow: hidden;
 
-  padding: 70px 8%;
+    display: flex;
+    align-items: center;
 
-  position: relative;
-  overflow: hidden;
+    padding: 85px 7%;
 
-  background:
-    radial-gradient(circle at 75% 30%, rgba(255,190,60,0.20), transparent 28%),
-    radial-gradient(circle at 20% 80%, rgba(37,99,235,0.14), transparent 30%),
-    linear-gradient(135deg, #071321, #0b192b 55%, #101827);
+    background:
+        radial-gradient(
+            circle at 80% 25%,
+            rgba(255,200,61,0.16),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(30,100,255,0.14),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #040914,
+            #091527,
+            #0c1627
+        );
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
+.hero-grid {
+    position: absolute;
+    inset: 0;
 
-  width: 600px;
-  height: 600px;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
 
-  border-radius: 50%;
+    background-size: 60px 60px;
 
-  right: -200px;
-  top: -300px;
-
-  background: rgba(255,190,60,0.08);
-  filter: blur(50px);
+    mask-image: linear-gradient(to bottom, black, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black, transparent);
 }
 
 .hero-content {
-  max-width: 650px;
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1120px;
+
+    margin: auto;
 }
 
-.badge {
-  display: inline-block;
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 
-  background: rgba(255,255,255,0.09);
-  border: 1px solid rgba(255,255,255,0.12);
+    padding: 8px 14px;
 
-  padding: 7px 15px;
-  border-radius: 20px;
+    border-radius: 30px;
 
-  font-size: 14px;
-  color: #e5e7eb;
+    background: rgba(255,255,255,0.055);
+    border: 1px solid rgba(255,255,255,0.10);
 
-  margin-bottom: 20px;
+    color: #dbe4ef;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 24px;
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #ffc83d;
+
+    box-shadow: 0 0 14px #ffc83d;
 }
 
 .hero h1 {
-  font-size: clamp(48px, 7vw, 76px);
-  line-height: 1;
-  margin-bottom: 20px;
+    max-width: 850px;
+
+    font-size: clamp(50px, 8vw, 90px);
+
+    line-height: 0.98;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 24px;
 }
 
 .hero h1 span {
-  color: #ffc83d;
+    color: #ffc83d;
+
+    text-shadow: 0 0 35px rgba(255,200,61,0.20);
 }
 
 .hero h2 {
-  font-size: 28px;
-  margin-bottom: 12px;
+    max-width: 760px;
+
+    font-size: clamp(22px, 3vw, 34px);
+
+    line-height: 1.2;
+
+    margin-bottom: 15px;
 }
 
-.hero p {
-  color: #cbd5e1;
-  max-width: 590px;
-  font-size: 17px;
+.hero-text {
+    max-width: 650px;
+
+    color: #9aacbf;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+/* ==============================
+   SEARCH
+============================== */
+
+.search-area {
+    max-width: 760px;
+    margin-top: 32px;
 }
 
 .search-box {
-  margin-top: 28px;
+    width: 100%;
+    min-height: 65px;
 
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 
-  max-width: 520px;
+    padding: 7px;
 
-  background: white;
-  border-radius: 30px;
+    background: #ffffff;
 
-  padding: 5px 8px;
+    border-radius: 17px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.35),
+        0 0 0 5px rgba(255,255,255,0.025);
 }
 
-.search-box span {
-  color: #64748b;
-  font-size: 20px;
-  padding-left: 14px;
+.search-icon {
+    width: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #64748b;
+
+    font-size: 24px;
 }
 
 .search-box input {
-  border: none;
-  outline: none;
+    flex: 1;
 
-  flex: 1;
+    min-width: 0;
 
-  padding: 13px;
+    padding: 12px 5px;
 
-  font-size: 15px;
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #111827;
+
+    font-size: 16px;
 }
 
+.search-box input::placeholder {
+    color: #94a3b8;
+}
 
-/* =========================
+.search-button {
+    border: none;
+
+    padding: 14px 21px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #ffe48a, #f59e0b);
+
+    color: #111827;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.search-button:hover {
+    transform: translateY(-2px);
+}
+
+.search-hints {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: 13px;
+}
+
+.search-hint {
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    color: #9aacbf;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.search-hint:hover {
+    color: #ffc83d;
+    border-color: rgba(255,200,61,0.35);
+}
+
+/* ==============================
+   CLEAN AD AREAS
+============================== */
+
+.ad-section {
+    width: 100%;
+
+    padding: 25px 6%;
+
+    background: #050914;
+}
+
+.ad-slot {
+    width: 100%;
+    max-width: 970px;
+
+    min-height: 90px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.012);
+
+    color: rgba(148,163,184,0.25);
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+/* ==============================
    CALCULATORS
-========================= */
+============================== */
 
 .calculators {
-  padding: 70px 6%;
+    padding: 85px 6% 100px;
 
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255,200,61,0.06), transparent 35%),
-    #06111f;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,200,61,0.05),
+            transparent 32%
+        ),
+        #050914;
 }
 
-.section-title {
-  text-align: center;
-  margin-bottom: 45px;
+.section-heading {
+    max-width: 700px;
+
+    margin: 0 auto 45px;
+
+    text-align: center;
 }
 
-.section-label {
-  color: #ffc83d;
-  text-transform: uppercase;
+.section-tag {
+    color: #ffc83d;
 
-  font-size: 12px;
-  font-weight: bold;
+    font-size: 11px;
 
-  letter-spacing: 4px;
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    font-weight: 900;
 }
 
-.section-title h2 {
-  font-size: 38px;
-  margin-top: 8px;
+.section-heading h2 {
+    margin-top: 8px;
+
+    font-size: clamp(32px, 5vw, 48px);
+
+    letter-spacing: -1.5px;
 }
 
-.section-title p {
-  color: #94a3b8;
-  margin-top: 5px;
+.section-heading p {
+    margin-top: 9px;
+
+    color: #8799ae;
+
+    line-height: 1.5;
 }
 
-
-/* =========================
-   TOOL GRID
-========================= */
+/* ==============================
+   TOOL CARDS
+============================== */
 
 .tool-grid {
-  max-width: 1200px;
-  margin: auto;
+    max-width: 1200px;
 
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+    margin: auto;
 
-  gap: 20px;
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 19px;
 }
 
 .tool-card {
-  background:
-    linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025));
+    position: relative;
 
-  border: 1px solid rgba(255,255,255,0.10);
+    overflow: hidden;
 
-  border-radius: 17px;
+    padding: 26px 22px;
 
-  padding: 28px 22px;
+    border-radius: 20px;
 
-  text-align: center;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.075),
+            rgba(255,255,255,0.025)
+        );
 
-  transition:
-    transform 0.25s,
-    border-color 0.25s,
-    box-shadow 0.25s;
+    border: 1px solid rgba(255,255,255,0.09);
+
+    transition: 0.3s;
 }
 
 .tool-card:hover {
-  transform: translateY(-7px);
+    transform: translateY(-7px);
 
-  border-color: rgba(255,200,61,0.65);
+    border-color: rgba(255,200,61,0.35);
 
-  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 25px 65px rgba(0,0,0,0.30);
+}
+
+.tool-card.highlight {
+    border-color: rgba(255,200,61,0.60);
+
+    box-shadow:
+        0 0 0 3px rgba(255,200,61,0.08),
+        0 25px 65px rgba(0,0,0,0.30);
 }
 
 .tool-icon {
-  width: 62px;
-  height: 62px;
+    width: 62px;
+    height: 62px;
 
-  margin: auto auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    margin-bottom: 18px;
 
-  border-radius: 50%;
+    border-radius: 16px;
 
-  font-size: 28px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,200,61,0.18),
+            rgba(255,200,61,0.04)
+        );
 
-  background: rgba(255,200,61,0.13);
+    border: 1px solid rgba(255,200,61,0.20);
 
-  border: 1px solid rgba(255,200,61,0.35);
+    font-size: 27px;
 }
 
 .tool-card h3 {
-  font-size: 21px;
-  margin-bottom: 8px;
+    font-size: 20px;
+
+    margin-bottom: 8px;
 }
 
 .tool-card p {
-  color: #94a3b8;
-  font-size: 14px;
+    min-height: 68px;
 
-  min-height: 48px;
+    color: #8799ae;
+
+    font-size: 14px;
+
+    line-height: 1.5;
 }
 
 .open-button {
-  width: 100%;
+    width: 100%;
 
-  margin-top: 20px;
+    margin-top: 18px;
 
-  padding: 12px;
+    padding: 13px;
 
-  border: none;
-  border-radius: 25px;
+    border: none;
 
-  background: #ffc83d;
-  color: #111827;
+    border-radius: 11px;
 
-  font-weight: bold;
+    background: linear-gradient(135deg, #ffe48a, #f59e0b);
 
-  transition: 0.2s;
+    color: #111827;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition: 0.2s;
 }
 
 .open-button:hover {
-  background: #ffd86b;
-  transform: scale(1.02);
+    transform: translateY(-2px);
 }
 
-
-/* =========================
-   CALCULATOR PANEL
-========================= */
+/* ==============================
+   CALCULATOR PANELS
+============================== */
 
 .calculator-panel {
-  max-width: 850px;
+    display: none;
 
-  margin: 45px auto 0;
+    max-width: 850px;
 
-  background: #0b192b;
+    margin: 35px auto 0;
 
-  border: 1px solid rgba(255,255,255,0.09);
+    padding: 32px;
 
-  border-radius: 18px;
+    border-radius: 22px;
 
-  padding: 30px;
+    background:
+        linear-gradient(
+            145deg,
+            #0c1a2d,
+            #081321
+        );
 
-  display: none;
+    border: 1px solid rgba(255,255,255,0.10);
+
+    box-shadow: 0 30px 85px rgba(0,0,0,0.32);
 }
 
 .calculator-panel.active {
-  display: block;
+    display: block;
+
+    animation: panelAppear 0.35s ease;
 }
 
-.calculator-panel h3 {
-  font-size: 27px;
-  margin-bottom: 8px;
+@keyframes panelAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
 }
 
-.calculator-panel > p {
-  color: #94a3b8;
-  margin-bottom: 25px;
+.panel-header {
+    margin-bottom: 25px;
+}
+
+.panel-header h3 {
+    font-size: 27px;
+
+    margin-bottom: 5px;
+}
+
+.panel-header p {
+    color: #8799ae;
+
+    line-height: 1.5;
 }
 
 .form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 17px;
 }
 
 .field label {
-  display: block;
+    display: block;
 
-  margin-bottom: 7px;
+    margin-bottom: 7px;
 
-  font-size: 14px;
-  color: #cbd5e1;
+    color: #cbd5e1;
+
+    font-size: 13px;
 }
 
 .field input {
-  width: 100%;
+    width: 100%;
 
-  padding: 13px 14px;
+    padding: 14px;
 
-  border-radius: 9px;
+    border-radius: 11px;
 
-  border: 1px solid #334155;
+    border: 1px solid #293c54;
 
-  background: #111f32;
+    background: #101f33;
 
-  color: white;
+    color: white;
 
-  outline: none;
+    outline: none;
+
+    font-size: 15px;
 }
 
 .field input:focus {
-  border-color: #ffc83d;
+    border-color: #ffc83d;
+
+    box-shadow: 0 0 0 3px rgba(255,200,61,0.08);
 }
 
 .calculate-button {
-  margin-top: 22px;
+    width: 100%;
 
-  width: 100%;
+    margin-top: 22px;
 
-  padding: 14px;
+    padding: 15px;
 
-  border: none;
-  border-radius: 10px;
+    border: none;
 
-  background: #ffc83d;
-  color: #111827;
+    border-radius: 11px;
 
-  font-weight: bold;
-  font-size: 16px;
+    background: linear-gradient(135deg, #ffe48a, #f59e0b);
+
+    color: #111827;
+
+    font-weight: 900;
+
+    cursor: pointer;
 }
 
 .reset-button {
-  margin-top: 10px;
+    width: 100%;
 
-  width: 100%;
+    margin-top: 10px;
 
-  padding: 12px;
+    padding: 12px;
 
-  border: 1px solid #334155;
+    border: 1px solid #293c54;
 
-  border-radius: 10px;
+    border-radius: 11px;
 
-  background: transparent;
-  color: #cbd5e1;
+    background: transparent;
 
-  font-weight: bold;
+    color: #94a3b8;
+
+    font-weight: 700;
+
+    cursor: pointer;
 }
 
 .result {
-  margin-top: 20px;
+    min-height: 28px;
 
-  padding: 18px;
+    margin-top: 20px;
 
-  border-radius: 10px;
+    padding: 18px;
 
-  background: rgba(255,200,61,0.08);
+    border-radius: 12px;
 
-  border: 1px solid rgba(255,200,61,0.25);
+    background: rgba(255,200,61,0.06);
 
-  color: #ffc83d;
+    border: 1px solid rgba(255,200,61,0.18);
 
-  text-align: center;
+    color: #ffc83d;
 
-  font-size: 22px;
-  font-weight: bold;
+    text-align: center;
+
+    font-size: 22px;
+
+    font-weight: 900;
 }
 
-
-/* =========================
-   WHY CHOOSE US
-========================= */
+/* ==============================
+   WHY US
+============================== */
 
 .why-us {
-  padding: 70px 7%;
+    padding: 85px 6%;
 
-  background: #071321;
+    background:
+        linear-gradient(
+            180deg,
+            #07111f,
+            #050c17
+        );
 
-  text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .features {
-  max-width: 1050px;
+    max-width: 1100px;
 
-  margin: 40px auto 0;
+    margin: 40px auto 0;
 
-  display: grid;
+    display: grid;
 
-  grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
-  gap: 20px;
+    gap: 15px;
 }
 
 .feature {
-  padding: 15px;
+    text-align: center;
 
-  border-right: 1px solid rgba(255,255,255,0.09);
-}
-
-.feature:last-child {
-  border-right: none;
+    padding: 24px 15px;
 }
 
 .feature-icon {
-  font-size: 28px;
-  color: #ffc83d;
+    width: 55px;
+    height: 55px;
 
-  margin-bottom: 8px;
+    margin: 0 auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: rgba(255,200,61,0.07);
+
+    border: 1px solid rgba(255,200,61,0.15);
+
+    font-size: 23px;
 }
 
 .feature h3 {
-  font-size: 17px;
-  margin-bottom: 5px;
+    font-size: 17px;
+
+    margin-bottom: 6px;
 }
 
 .feature p {
-  color: #94a3b8;
-  font-size: 13px;
+    color: #7e90a5;
+
+    font-size: 13px;
+
+    line-height: 1.5;
 }
 
-
-/* =========================
+/* ==============================
    FOOTER
-========================= */
+============================== */
 
 footer {
-  background: #040c16;
+    padding: 60px 7% 25px;
 
-  border-top: 1px solid rgba(255,255,255,0.08);
-
-  padding: 45px 7% 25px;
+    background: #030711;
 }
 
 .footer-grid {
-  max-width: 1100px;
-  margin: auto;
+    max-width: 1100px;
 
-  display: grid;
+    margin: auto;
 
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+    display: grid;
 
-  gap: 40px;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+
+    gap: 40px;
 }
 
 .footer-brand p {
-  color: #94a3b8;
-  margin-top: 10px;
+    max-width: 300px;
 
-  max-width: 280px;
+    margin-top: 12px;
 
-  font-size: 14px;
+    color: #718096;
+
+    font-size: 14px;
+
+    line-height: 1.5;
 }
 
 footer h4 {
-  margin-bottom: 12px;
+    margin-bottom: 13px;
 }
 
 footer a {
-  display: block;
+    display: block;
 
-  color: #94a3b8;
+    margin: 8px 0;
 
-  text-decoration: none;
+    color: #718096;
 
-  font-size: 14px;
+    text-decoration: none;
 
-  margin: 7px 0;
+    font-size: 13px;
+
+    transition: 0.2s;
 }
 
 footer a:hover {
-  color: #ffc83d;
+    color: #ffc83d;
 }
 
 .copyright {
-  max-width: 1100px;
+    max-width: 1100px;
 
-  margin: 35px auto 0;
+    margin: 40px auto 0;
 
-  padding-top: 20px;
+    padding-top: 20px;
 
-  border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid rgba(255,255,255,0.07);
 
-  text-align: center;
+    text-align: center;
 
-  color: #64748b;
+    color: #475569;
 
-  font-size: 13px;
+    font-size: 12px;
 }
 
+/* ==============================
+   TABLET
+============================== */
 
-/* =========================
+@media (max-width: 1050px) {
+
+    .tool-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* ==============================
    MOBILE
-========================= */
+============================== */
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
 
-  .nav-links {
-    gap: 15px;
-  }
+    .navbar {
+        height: 65px;
+        padding: 0 18px;
+    }
 
-  .tool-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    .logo {
+        font-size: 18px;
+    }
 
-  .features {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    .nav-links {
+        display: none;
+    }
 
-  .feature {
-    border-right: none;
-  }
+    .hero {
+        min-height: 620px;
+        padding: 65px 20px;
+    }
 
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    .hero h1 {
+        font-size: 52px;
+        letter-spacing: -2.5px;
+    }
+
+    .hero h2 {
+        font-size: 23px;
+    }
+
+    .hero-text {
+        font-size: 15px;
+    }
+
+    .search-box {
+        min-height: 59px;
+        border-radius: 15px;
+    }
+
+    .search-icon {
+        width: 35px;
+    }
+
+    .search-box input {
+        font-size: 13px;
+    }
+
+    .search-button {
+        padding: 12px 12px;
+        font-size: 12px;
+    }
+
+    .tool-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calculator-panel {
+        padding: 23px 18px;
+    }
+
+    .calculators {
+        padding: 65px 18px 80px;
+    }
+
+    .why-us {
+        padding: 65px 18px;
+    }
+
+    .ad-section {
+        padding: 20px 15px;
+    }
+
+    .ad-slot {
+        min-height: 70px;
+    }
+
 }
 
+/* ==============================
+   SMALL PHONES
+============================== */
 
-@media (max-width: 600px) {
+@media (max-width: 420px) {
 
-  .navbar {
-    padding: 0 20px;
-  }
+    .hero h1 {
+        font-size: 44px;
+    }
 
-  .nav-links {
-    display: none;
-  }
+    .hero h2 {
+        font-size: 21px;
+    }
 
-  .hero {
-    padding: 55px 22px;
-    min-height: 500px;
-  }
+    .search-button {
+        padding: 11px 9px;
+    }
 
-  .hero h1 {
-    font-size: 50px;
-  }
+    .search-box input {
+        font-size: 12px;
+    }
 
-  .hero h2 {
-    font-size: 23px;
-  }
-
-  .hero p {
-    font-size: 15px;
-  }
-
-  .tool-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .calculator-panel {
-    padding: 22px;
-  }
-
-  .features {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .calculators {
-    padding: 55px 18px;
-  }
-
-  .section-title h2 {
-    font-size: 31px;
-  }
 }
 
+/* ==============================
+   ACCESSIBILITY
+============================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+}
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =========================
-     NAVBAR
-========================= -->
+<!-- ==============================
+     NAVIGATION
+============================== -->
 
 <nav class="navbar">
 
-  <div class="logo">
-    <div class="logo-icon">▣</div>
-    FreeTools <span>Hub</span>
-  </div>
-
-  <div class="nav-links">
-
-    <a href="#">Home</a>
-
-    <a href="#calculators">
-      Calculators
+    <a href="#" class="logo">
+        <div class="logo-mark">F</div>
+        FreeTools <span>Hub</span>
     </a>
 
-    <a href="#about">
-      About
-    </a>
+    <div class="nav-links">
 
-    <a href="#contact">
-      Contact
-    </a>
+        <a href="#">Home</a>
 
-    <a class="nav-button" href="#calculators">
-      ♥ Your Useful Tools
-    </a>
+        <a href="#calculators">Calculators</a>
 
-  </div>
+        <a href="#about">About</a>
+
+        <a href="#contact">Contact</a>
+
+        <a href="#calculators" class="nav-cta">
+            Explore Tools →
+        </a>
+
+    </div>
 
 </nav>
 
 
-
-<!-- =========================
+<!-- ==============================
      HERO
-========================= -->
+============================== -->
 
 <section class="hero">
 
-  <div class="hero-content">
+    <div class="hero-grid"></div>
 
-    <div class="badge">
-      ⚡ Fast &nbsp;•&nbsp; Free &nbsp;•&nbsp; Easy to Use
+    <div class="hero-content">
+
+        <div class="hero-badge">
+
+            <span class="live-dot"></span>
+
+            Fast • Free • No Sign-Up
+
+        </div>
+
+
+        <h1>
+
+            Smart Tools.
+            <span>Simple Life.</span>
+
+        </h1>
+
+
+        <h2>
+            Every calculator you need,
+            all in one place.
+        </h2>
+
+
+        <p class="hero-text">
+
+            Calculate, convert and solve everyday problems
+            in seconds with simple tools built for everyone.
+
+        </p>
+
+
+        <!-- SEARCH -->
+
+        <div class="search-area">
+
+            <div class="search-box">
+
+                <div class="search-icon">
+                    ⌕
+                </div>
+
+                <input
+                    id="searchInput"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="What do you need to calculate?"
+                    onkeydown="handleSearchKey(event)"
+                >
+
+                <button
+                    class="search-button"
+                    onclick="performSearch()"
+                >
+                    Find Tool
+                </button>
+
+            </div>
+
+
+            <div class="search-hints">
+
+                <span
+                    class="search-hint"
+                    onclick="quickSearch('kg to lbs')">
+                    KG to LBS
+                </span>
+
+                <span
+                    class="search-hint"
+                    onclick="quickSearch('loan')">
+                    Loan
+                </span>
+
+                <span
+                    class="search-hint"
+                    onclick="quickSearch('bmi')">
+                    BMI
+                </span>
+
+                <span
+                    class="search-hint"
+                    onclick="quickSearch('time')">
+                    Time
+                </span>
+
+            </div>
+
+        </div>
+
     </div>
-
-    <h1>
-      FreeTools <span>Hub</span>
-    </h1>
-
-    <h2>
-      All The Calculators You Need — In One Place
-    </h2>
-
-    <p>
-      Simple, fast and accurate online calculators to make
-      everyday calculations easier. No downloads. No sign-ups.
-      Just free tools whenever you need them.
-    </p>
-
-    <div class="search-box">
-
-      <span>⌕</span>
-
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search for a calculator..."
-        onkeyup="searchTools()"
-      >
-
-    </div>
-
-  </div>
 
 </section>
 
 
+<!-- ==============================
+     AD AREA 1
+     CLEAN / SUBTLE
+============================== -->
 
-<!-- =========================
+<section class="ad-section">
+
+    <div class="ad-slot">
+        Advertisement
+    </div>
+
+</section>
+
+
+<!-- ==============================
      CALCULATORS
-========================= -->
+============================== -->
 
 <section class="calculators" id="calculators">
 
-  <div class="section-title">
 
-    <div class="section-label">
-      Our Calculators
-    </div>
+    <div class="section-heading">
 
-    <h2>
-      Choose Your Calculator
-    </h2>
+        <div class="section-tag">
+            Free Tools
+        </div>
 
-    <p>
-      Select a tool below and get your results in seconds.
-    </p>
+        <h2>
+            Choose Your Calculator
+        </h2>
 
-  </div>
-
-
-  <div class="tool-grid">
-
-
-    <!-- KG TO LBS -->
-
-    <div class="tool-card">
-
-      <div class="tool-icon">
-        ⚖️
-      </div>
-
-      <h3>
-        KG to LBS
-      </h3>
-
-      <p>
-        Convert kilograms to pounds instantly and accurately.
-      </p>
-
-      <button
-        class="open-button"
-        onclick="openCalculator('kgPanel')"
-      >
-        Open Calculator →
-      </button>
+        <p>
+            Find a tool instantly or browse the calculators below.
+        </p>
 
     </div>
 
 
+    <div class="tool-grid">
 
-    <!-- LOAN -->
 
-    <div class="tool-card">
+        <!-- KG TO LBS -->
 
-      <div class="tool-icon">
-        💰
-      </div>
+        <div
+            class="tool-card"
+            id="kgCard"
+            data-tool="kg"
+        >
 
-      <h3>
-        Loan Calculator
-      </h3>
+            <div class="tool-icon">
+                ⚖️
+            </div>
 
-      <p>
-        Calculate your estimated monthly loan payment.
-      </p>
+            <h3>
+                KG to LBS
+            </h3>
 
-      <button
-        class="open-button"
-        onclick="openCalculator('loanPanel')"
-      >
-        Open Calculator →
-      </button>
+            <p>
+                Convert kilograms to pounds quickly and accurately.
+            </p>
+
+            <button
+                class="open-button"
+                onclick="openCalculator('kgPanel','kgInput')"
+            >
+                Open Calculator →
+            </button>
+
+        </div>
+
+
+        <!-- LOAN -->
+
+        <div
+            class="tool-card"
+            id="loanCard"
+            data-tool="loan"
+        >
+
+            <div class="tool-icon">
+                💰
+            </div>
+
+            <h3>
+                Loan Calculator
+            </h3>
+
+            <p>
+                Estimate your monthly loan payment using your numbers.
+            </p>
+
+            <button
+                class="open-button"
+                onclick="openCalculator('loanPanel','loanAmount')"
+            >
+                Open Calculator →
+            </button>
+
+        </div>
+
+
+        <!-- BMI -->
+
+        <div
+            class="tool-card"
+            id="bmiCard"
+            data-tool="bmi"
+        >
+
+            <div class="tool-icon">
+                📊
+            </div>
+
+            <h3>
+                BMI Calculator
+            </h3>
+
+            <p>
+                Calculate BMI from height and weight.
+            </p>
+
+            <button
+                class="open-button"
+                onclick="openCalculator('bmiPanel','heightInput')"
+            >
+                Open Calculator →
+            </button>
+
+        </div>
+
+
+        <!-- TIME -->
+
+        <div
+            class="tool-card"
+            id="timeCard"
+            data-tool="time"
+        >
+
+            <div class="tool-icon">
+                ⏱️
+            </div>
+
+            <h3>
+                Time Calculator
+            </h3>
+
+            <p>
+                Add two amounts of time together instantly.
+            </p>
+
+            <button
+                class="open-button"
+                onclick="openCalculator('timePanel','hours1')"
+            >
+                Open Calculator →
+            </button>
+
+        </div>
 
     </div>
 
 
-
-    <!-- BMI -->
-
-    <div class="tool-card">
-
-      <div class="tool-icon">
-        ❤️
-      </div>
-
-      <h3>
-        BMI Calculator
-      </h3>
-
-      <p>
-        Calculate BMI using your height and weight.
-      </p>
-
-      <button
-        class="open-button"
-        onclick="openCalculator('bmiPanel')"
-      >
-        Open Calculator →
-      </button>
-
-    </div>
-
-
-
-    <!-- TIME -->
-
-    <div class="tool-card">
-
-      <div class="tool-icon">
-        🕐
-      </div>
-
-      <h3>
-        Time Calculator
-      </h3>
-
-      <p>
-        Add or subtract time with simple inputs.
-      </p>
-
-      <button
-        class="open-button"
-        onclick="openCalculator('timePanel')"
-      >
-        Open Calculator →
-      </button>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- =========================
-       KG PANEL
-  ========================= -->
-
-  <div class="calculator-panel" id="kgPanel">
-
-    <h3>
-      ⚖️ Kilograms to Pounds
-    </h3>
-
-    <p>
-      Enter a weight in kilograms to convert it to pounds.
-    </p>
-
-    <div class="field">
-
-      <label>
-        Kilograms
-      </label>
-
-      <input
-        type="number"
-        id="kgInput"
-        placeholder="Enter kilograms"
-        min="0"
-        step="any"
-      >
-
-    </div>
-
-    <button
-      class="calculate-button"
-      onclick="calculateKg()"
-    >
-      Convert to Pounds
-    </button>
-
-    <button
-      class="reset-button"
-      onclick="resetKg()"
-    >
-      Reset
-    </button>
+    <!-- ==========================
+         KG PANEL
+    =========================== -->
 
     <div
-      class="result"
-      id="kgResult"
-    ></div>
+        class="calculator-panel"
+        id="kgPanel"
+    >
 
-  </div>
+        <div class="panel-header">
+
+            <h3>
+                ⚖️ Kilograms to Pounds
+            </h3>
+
+            <p>
+                Enter a weight in kilograms to convert it to pounds.
+            </p>
+
+        </div>
 
 
+        <div class="field">
 
-  <!-- =========================
-       LOAN PANEL
-  ========================= -->
+            <label>
+                Kilograms
+            </label>
 
-  <div class="calculator-panel" id="loanPanel">
+            <input
+                type="number"
+                id="kgInput"
+                min="0"
+                step="any"
+                placeholder="Example: 55"
+                onkeydown="if(event.key==='Enter') calculateKg()"
+            >
 
-    <h3>
-      💰 Loan Calculator
-    </h3>
+        </div>
 
-    <p>
-      Estimate your monthly loan payment.
-    </p>
 
-    <div class="form-grid">
-
-      <div class="field">
-
-        <label>
-          Loan Amount ($)
-        </label>
-
-        <input
-          type="number"
-          id="loanAmount"
-          placeholder="Example: 10000"
-          min="0"
-          step="any"
+        <button
+            class="calculate-button"
+            onclick="calculateKg()"
         >
+            Convert to Pounds
+        </button>
 
-      </div>
 
-
-      <div class="field">
-
-        <label>
-          Annual Interest Rate (%)
-        </label>
-
-        <input
-          type="number"
-          id="interestRate"
-          placeholder="Example: 6.5"
-          min="0"
-          step="any"
+        <button
+            class="reset-button"
+            onclick="resetKg()"
         >
+            Reset
+        </button>
 
-      </div>
 
-
-      <div class="field">
-
-        <label>
-          Loan Term (Years)
-        </label>
-
-        <input
-          type="number"
-          id="loanYears"
-          placeholder="Example: 5"
-          min="1"
-          step="1"
-        >
-
-      </div>
+        <div
+            class="result"
+            id="kgResult"
+        ></div>
 
     </div>
 
 
-    <button
-      class="calculate-button"
-      onclick="calculateLoan()"
-    >
-      Calculate Payment
-    </button>
-
-    <button
-      class="reset-button"
-      onclick="resetLoan()"
-    >
-      Reset
-    </button>
+    <!-- ==========================
+         LOAN PANEL
+    =========================== -->
 
     <div
-      class="result"
-      id="loanResult"
-    ></div>
+        class="calculator-panel"
+        id="loanPanel"
+    >
 
-  </div>
+        <div class="panel-header">
+
+            <h3>
+                💰 Loan Calculator
+            </h3>
+
+            <p>
+                Estimate your monthly loan payment.
+            </p>
+
+        </div>
 
 
+        <div class="form-grid">
 
-  <!-- =========================
-       BMI PANEL
-  ========================= -->
 
-  <div class="calculator-panel" id="bmiPanel">
+            <div class="field">
 
-    <h3>
-      📊 BMI Calculator
-    </h3>
+                <label>
+                    Loan Amount ($)
+                </label>
 
-    <p>
-      Enter height and weight to calculate BMI.
-    </p>
+                <input
+                    type="number"
+                    id="loanAmount"
+                    min="0"
+                    step="any"
+                    placeholder="Example: 10000"
+                >
 
-    <div class="form-grid">
+            </div>
 
-      <div class="field">
 
-        <label>
-          Height (cm)
-        </label>
+            <div class="field">
 
-        <input
-          type="number"
-          id="heightInput"
-          placeholder="Example: 175"
-          min="1"
-          step="any"
+                <label>
+                    Annual Interest Rate (%)
+                </label>
+
+                <input
+                    type="number"
+                    id="interestRate"
+                    min="0"
+                    step="any"
+                    placeholder="Example: 6.5"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Loan Term (Years)
+                </label>
+
+                <input
+                    type="number"
+                    id="loanYears"
+                    min="1"
+                    step="1"
+                    placeholder="Example: 5"
+                >
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="calculate-button"
+            onclick="calculateLoan()"
         >
+            Calculate Payment
+        </button>
 
-      </div>
 
-
-      <div class="field">
-
-        <label>
-          Weight (kg)
-        </label>
-
-        <input
-          type="number"
-          id="weightInput"
-          placeholder="Example: 70"
-          min="1"
-          step="any"
+        <button
+            class="reset-button"
+            onclick="resetLoan()"
         >
+            Reset
+        </button>
 
-      </div>
+
+        <div
+            class="result"
+            id="loanResult"
+        ></div>
 
     </div>
 
 
-    <button
-      class="calculate-button"
-      onclick="calculateBMI()"
-    >
-      Calculate BMI
-    </button>
-
-    <button
-      class="reset-button"
-      onclick="resetBMI()"
-    >
-      Reset
-    </button>
+    <!-- ==========================
+         BMI PANEL
+    =========================== -->
 
     <div
-      class="result"
-      id="bmiResult"
-    ></div>
+        class="calculator-panel"
+        id="bmiPanel"
+    >
 
-  </div>
+        <div class="panel-header">
+
+            <h3>
+                📊 BMI Calculator
+            </h3>
+
+            <p>
+                Enter height and weight to calculate BMI.
+            </p>
+
+        </div>
 
 
+        <div class="form-grid">
 
-  <!-- =========================
-       TIME PANEL
-  ========================= -->
 
-  <div class="calculator-panel" id="timePanel">
+            <div class="field">
 
-    <h3>
-      ⏱️ Time Calculator
-    </h3>
+                <label>
+                    Height (cm)
+                </label>
 
-    <p>
-      Add two amounts of time together.
-    </p>
+                <input
+                    type="number"
+                    id="heightInput"
+                    min="1"
+                    step="any"
+                    placeholder="Example: 175"
+                >
 
-    <div class="form-grid">
+            </div>
 
-      <div class="field">
 
-        <label>
-          First Hours
-        </label>
+            <div class="field">
 
-        <input
-          type="number"
-          id="hours1"
-          placeholder="Example: 2"
-          min="0"
+                <label>
+                    Weight (kg)
+                </label>
+
+                <input
+                    type="number"
+                    id="weightInput"
+                    min="1"
+                    step="any"
+                    placeholder="Example: 70"
+                >
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="calculate-button"
+            onclick="calculateBMI()"
         >
+            Calculate BMI
+        </button>
 
-      </div>
 
-
-      <div class="field">
-
-        <label>
-          First Minutes
-        </label>
-
-        <input
-          type="number"
-          id="minutes1"
-          placeholder="Example: 30"
-          min="0"
+        <button
+            class="reset-button"
+            onclick="resetBMI()"
         >
-
-      </div>
-
-
-      <div class="field">
-
-        <label>
-          Second Hours
-        </label>
-
-        <input
-          type="number"
-          id="hours2"
-          placeholder="Example: 1"
-          min="0"
-        >
-
-      </div>
+            Reset
+        </button>
 
 
-      <div class="field">
-
-        <label>
-          Second Minutes
-        </label>
-
-        <input
-          type="number"
-          id="minutes2"
-          placeholder="Example: 45"
-          min="0"
-        >
-
-      </div>
+        <div
+            class="result"
+            id="bmiResult"
+        ></div>
 
     </div>
 
 
-    <button
-      class="calculate-button"
-      onclick="calculateTime()"
-    >
-      Calculate Time
-    </button>
-
-    <button
-      class="reset-button"
-      onclick="resetTime()"
-    >
-      Reset
-    </button>
+    <!-- ==========================
+         TIME PANEL
+    =========================== -->
 
     <div
-      class="result"
-      id="timeResult"
-    ></div>
+        class="calculator-panel"
+        id="timePanel"
+    >
 
-  </div>
+        <div class="panel-header">
+
+            <h3>
+                ⏱️ Time Calculator
+            </h3>
+
+            <p>
+                Add two amounts of time together.
+            </p>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+            <div class="field">
+
+                <label>
+                    First Hours
+                </label>
+
+                <input
+                    type="number"
+                    id="hours1"
+                    min="0"
+                    placeholder="Example: 2"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    First Minutes
+                </label>
+
+                <input
+                    type="number"
+                    id="minutes1"
+                    min="0"
+                    placeholder="Example: 30"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Second Hours
+                </label>
+
+                <input
+                    type="number"
+                    id="hours2"
+                    min="0"
+                    placeholder="Example: 1"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Second Minutes
+                </label>
+
+                <input
+                    type="number"
+                    id="minutes2"
+                    min="0"
+                    placeholder="Example: 45"
+                >
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="calculate-button"
+            onclick="calculateTime()"
+        >
+            Calculate Time
+        </button>
+
+
+        <button
+            class="reset-button"
+            onclick="resetTime()"
+        >
+            Reset
+        </button>
+
+
+        <div
+            class="result"
+            id="timeResult"
+        ></div>
+
+    </div>
 
 </section>
 
 
+<!-- ==============================
+     AD AREA 2
+============================== -->
 
-<!-- =========================
-     WHY CHOOSE US
-========================= -->
+<section class="ad-section">
 
-<section class="why-us" id="about">
-
-  <div class="section-title">
-
-    <div class="section-label">
-      Why Choose Us
+    <div class="ad-slot">
+        Advertisement
     </div>
-
-    <h2>
-      Simple. Fast. Reliable.
-    </h2>
-
-    <p>
-      We built FreeTools Hub to provide a simple online calculator experience.
-    </p>
-
-  </div>
-
-
-  <div class="features">
-
-
-    <div class="feature">
-
-      <div class="feature-icon">
-        ⚡
-      </div>
-
-      <h3>
-        100% Free
-      </h3>
-
-      <p>
-        No subscriptions or hidden fees.
-      </p>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="feature-icon">
-        ✓
-      </div>
-
-      <h3>
-        Accurate Results
-      </h3>
-
-      <p>
-        Calculations are performed instantly.
-      </p>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="feature-icon">
-        📱
-      </div>
-
-      <h3>
-        Mobile Friendly
-      </h3>
-
-      <p>
-        Designed to work across different devices.
-      </p>
-
-    </div>
-
-
-    <div class="feature">
-
-      <div class="feature-icon">
-        🔒
-      </div>
-
-      <h3>
-        No Sign-Up
-      </h3>
-
-      <p>
-        Open a calculator and get your result.
-      </p>
-
-    </div>
-
-  </div>
 
 </section>
 
 
+<!-- ==============================
+     ABOUT / FEATURES
+============================== -->
 
-<!-- =========================
+<section
+    class="why-us"
+    id="about"
+>
+
+    <div class="section-heading">
+
+        <div class="section-tag">
+            Why FreeTools Hub
+        </div>
+
+        <h2>
+            Simple. Fast. Useful.
+        </h2>
+
+        <p>
+            Everything is designed to help visitors get answers quickly.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Fast
+            </h3>
+
+            <p>
+                Results appear instantly.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ✓
+            </div>
+
+            <h3>
+                Simple
+            </h3>
+
+            <p>
+                No complicated process.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📱
+            </div>
+
+            <h3>
+                Responsive
+            </h3>
+
+            <p>
+                Works on phones, tablets and computers.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔒
+            </div>
+
+            <h3>
+                No Sign-Up
+            </h3>
+
+            <p>
+                Use the tools without creating an account.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     AD AREA 3
+============================== -->
+
+<section class="ad-section">
+
+    <div class="ad-slot">
+        Advertisement
+    </div>
+
+</section>
+
+
+<!-- ==============================
      FOOTER
-========================= -->
+============================== -->
 
 <footer id="contact">
 
-  <div class="footer-grid">
+    <div class="footer-grid">
 
 
-    <div class="footer-brand">
+        <div class="footer-brand">
 
-      <div class="logo">
-        <div class="logo-icon">▣</div>
-        FreeTools <span>Hub</span>
-      </div>
+            <a href="#" class="logo">
 
-      <p>
-        Simple tools. Big help. Free calculators for everyday use.
-      </p>
+                <div class="logo-mark">
+                    F
+                </div>
+
+                FreeTools <span>Hub</span>
+
+            </a>
+
+
+            <p>
+                Simple tools. Big help.
+                Free calculators for everyday life.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Explore
+            </h4>
+
+            <a href="#">
+                Home
+            </a>
+
+            <a href="#calculators">
+                Calculators
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Legal
+            </h4>
+
+            <a href="#">
+                Privacy Policy
+            </a>
+
+            <a href="#">
+                Terms of Service
+            </a>
+
+            <a href="#">
+                Disclaimer
+            </a>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                Connect
+            </h4>
+
+            <a href="#">
+                Instagram
+            </a>
+
+            <a href="#">
+                YouTube
+            </a>
+
+            <a href="#">
+                X
+            </a>
+
+        </div>
 
     </div>
 
 
-    <div>
+    <div class="copyright">
 
-      <h4>
-        Quick Links
-      </h4>
-
-      <a href="#">
-        Home
-      </a>
-
-      <a href="#calculators">
-        Calculators
-      </a>
-
-      <a href="#about">
-        About
-      </a>
-
-      <a href="#contact">
-        Contact
-      </a>
+        © 2026 FreeTools Hub. All rights reserved.
 
     </div>
-
-
-    <div>
-
-      <h4>
-        Legal
-      </h4>
-
-      <a href="#">
-        Privacy Policy
-      </a>
-
-      <a href="#">
-        Terms of Service
-      </a>
-
-      <a href="#">
-        Disclaimer
-      </a>
-
-    </div>
-
-
-    <div>
-
-      <h4>
-        Stay Connected
-      </h4>
-
-      <a href="#">
-        YouTube
-      </a>
-
-      <a href="#">
-        Instagram
-      </a>
-
-      <a href="#">
-        X
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <div class="copyright">
-    © 2026 FreeTools Hub. All rights reserved.
-  </div>
 
 </footer>
 
 
-
 <script>
 
-/* =========================
+/* =========================================
    OPEN CALCULATOR
-========================= */
+========================================= */
 
-function openCalculator(id) {
+function openCalculator(panelId, inputId) {
 
-  const panels =
-    document.querySelectorAll(".calculator-panel");
+    document
+        .querySelectorAll(".calculator-panel")
+        .forEach(function(panel) {
 
-  panels.forEach(function(panel) {
-    panel.classList.remove("active");
-  });
+            panel.classList.remove("active");
 
-  const selected =
-    document.getElementById(id);
+        });
 
-  selected.classList.add("active");
 
-  selected.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
+    document
+        .querySelectorAll(".tool-card")
+        .forEach(function(card) {
+
+            card.classList.remove("highlight");
+
+        });
+
+
+    const panel =
+        document.getElementById(panelId);
+
+
+    if (!panel) return;
+
+
+    panel.classList.add("active");
+
+
+    const cardMap = {
+
+        kgPanel: "kgCard",
+
+        loanPanel: "loanCard",
+
+        bmiPanel: "bmiCard",
+
+        timePanel: "timeCard"
+
+    };
+
+
+    const card =
+        document.getElementById(cardMap[panelId]);
+
+
+    if (card) {
+
+        card.classList.add("highlight");
+
+    }
+
+
+    setTimeout(function() {
+
+        panel.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "center"
+
+        });
+
+    }, 80);
+
+
+    if (inputId) {
+
+        setTimeout(function() {
+
+            const input =
+                document.getElementById(inputId);
+
+            if (input) {
+
+                input.focus();
+
+            }
+
+        }, 550);
+
+    }
 
 }
 
 
-/* =========================
+/* =========================================
    KG TO LBS
-========================= */
+========================================= */
 
 function calculateKg() {
 
-  const kg =
-    parseFloat(
-      document.getElementById("kgInput").value
-    );
+    const kg =
+        parseFloat(
+            document.getElementById("kgInput").value
+        );
 
-  const result =
-    document.getElementById("kgResult");
 
-  if (isNaN(kg) || kg < 0) {
+    const result =
+        document.getElementById("kgResult");
+
+
+    if (!Number.isFinite(kg) || kg < 0) {
+
+        result.textContent =
+            "Please enter a valid weight.";
+
+        return;
+
+    }
+
+
+    const pounds =
+        kg * 2.2046226218;
+
 
     result.textContent =
-      "Please enter a valid number.";
-
-    return;
-  }
-
-  const pounds =
-    kg * 2.2046226218;
-
-  result.textContent =
-    pounds.toFixed(2) + " lbs";
+        pounds.toFixed(2) + " lbs";
 
 }
 
 
 function resetKg() {
 
-  document.getElementById("kgInput").value = "";
+    document.getElementById("kgInput").value = "";
 
-  document.getElementById("kgResult").textContent = "";
+    document.getElementById("kgResult").textContent = "";
 
 }
 
 
-/* =========================
+/* =========================================
    LOAN CALCULATOR
-========================= */
+========================================= */
 
 function calculateLoan() {
 
-  const amount =
-    parseFloat(
-      document.getElementById("loanAmount").value
-    );
-
-  const annualRate =
-    parseFloat(
-      document.getElementById("interestRate").value
-    );
-
-  const years =
-    parseFloat(
-      document.getElementById("loanYears").value
-    );
-
-  const result =
-    document.getElementById("loanResult");
+    const amount =
+        parseFloat(
+            document.getElementById("loanAmount").value
+        );
 
 
-  if (
-    isNaN(amount) ||
-    isNaN(annualRate) ||
-    isNaN(years) ||
-    amount <= 0 ||
-    annualRate < 0 ||
-    years <= 0
-  ) {
+    const annualRate =
+        parseFloat(
+            document.getElementById("interestRate").value
+        );
+
+
+    const years =
+        parseFloat(
+            document.getElementById("loanYears").value
+        );
+
+
+    const result =
+        document.getElementById("loanResult");
+
+
+    if (
+        !Number.isFinite(amount) ||
+        !Number.isFinite(annualRate) ||
+        !Number.isFinite(years) ||
+        amount <= 0 ||
+        annualRate < 0 ||
+        years <= 0
+    ) {
+
+        result.textContent =
+            "Please enter valid loan information.";
+
+        return;
+
+    }
+
+
+    const monthlyRate =
+        annualRate / 100 / 12;
+
+
+    const payments =
+        years * 12;
+
+
+    let monthlyPayment;
+
+
+    if (monthlyRate === 0) {
+
+        monthlyPayment =
+            amount / payments;
+
+    } else {
+
+        const power =
+            Math.pow(
+                1 + monthlyRate,
+                payments
+            );
+
+
+        monthlyPayment =
+            amount *
+            (
+                monthlyRate * power
+            )
+            /
+            (
+                power - 1
+            );
+
+    }
+
+
+    if (!Number.isFinite(monthlyPayment)) {
+
+        result.textContent =
+            "These numbers are too large.";
+
+        return;
+
+    }
+
 
     result.textContent =
-      "Please enter valid loan information.";
-
-    return;
-  }
-
-
-  const monthlyRate =
-    annualRate / 100 / 12;
-
-  const payments =
-    years * 12;
-
-  let monthlyPayment;
-
-
-  if (monthlyRate === 0) {
-
-    monthlyPayment =
-      amount / payments;
-
-  } else {
-
-    monthlyPayment =
-      amount *
-      (
-        monthlyRate *
-        Math.pow(
-          1 + monthlyRate,
-          payments
-        )
-      )
-      /
-      (
-        Math.pow(
-          1 + monthlyRate,
-          payments
-        ) - 1
-      );
-
-  }
-
-
-  result.textContent =
-    "$" +
-    monthlyPayment.toFixed(2) +
-    " / month";
+        "$" +
+        monthlyPayment.toFixed(2) +
+        " / month";
 
 }
 
 
 function resetLoan() {
 
-  document.getElementById("loanAmount").value = "";
+    document.getElementById("loanAmount").value = "";
 
-  document.getElementById("interestRate").value = "";
+    document.getElementById("interestRate").value = "";
 
-  document.getElementById("loanYears").value = "";
+    document.getElementById("loanYears").value = "";
 
-  document.getElementById("loanResult").textContent = "";
+    document.getElementById("loanResult").textContent = "";
 
 }
 
 
-/* =========================
+/* =========================================
    BMI
-========================= */
+========================================= */
 
 function calculateBMI() {
 
-  const height =
-    parseFloat(
-      document.getElementById("heightInput").value
-    );
-
-  const weight =
-    parseFloat(
-      document.getElementById("weightInput").value
-    );
-
-  const result =
-    document.getElementById("bmiResult");
+    const height =
+        parseFloat(
+            document.getElementById("heightInput").value
+        );
 
 
-  if (
-    isNaN(height) ||
-    isNaN(weight) ||
-    height <= 0 ||
-    weight <= 0
-  ) {
+    const weight =
+        parseFloat(
+            document.getElementById("weightInput").value
+        );
+
+
+    const result =
+        document.getElementById("bmiResult");
+
+
+    if (
+        !Number.isFinite(height) ||
+        !Number.isFinite(weight) ||
+        height <= 0 ||
+        weight <= 0
+    ) {
+
+        result.textContent =
+            "Please enter valid information.";
+
+        return;
+
+    }
+
+
+    const meters =
+        height / 100;
+
+
+    const bmi =
+        weight /
+        (meters * meters);
+
 
     result.textContent =
-      "Please enter valid information.";
-
-    return;
-  }
-
-
-  const heightMeters =
-    height / 100;
-
-  const bmi =
-    weight /
-    (heightMeters * heightMeters);
-
-
-  result.textContent =
-    "BMI: " +
-    bmi.toFixed(1);
+        "BMI: " +
+        bmi.toFixed(1);
 
 }
 
 
 function resetBMI() {
 
-  document.getElementById("heightInput").value = "";
+    document.getElementById("heightInput").value = "";
 
-  document.getElementById("weightInput").value = "";
+    document.getElementById("weightInput").value = "";
 
-  document.getElementById("bmiResult").textContent = "";
+    document.getElementById("bmiResult").textContent = "";
 
 }
 
 
-/* =========================
+/* =========================================
    TIME CALCULATOR
-========================= */
+========================================= */
 
 function calculateTime() {
 
-  const h1 =
-    parseInt(
-      document.getElementById("hours1").value
-    ) || 0;
-
-  const m1 =
-    parseInt(
-      document.getElementById("minutes1").value
-    ) || 0;
-
-  const h2 =
-    parseInt(
-      document.getElementById("hours2").value
-    ) || 0;
-
-  const m2 =
-    parseInt(
-      document.getElementById("minutes2").value
-    ) || 0;
+    const h1 =
+        parseInt(
+            document.getElementById("hours1").value,
+            10
+        ) || 0;
 
 
-  if (m1 < 0 || m2 < 0 || h1 < 0 || h2 < 0) {
-
-    document.getElementById("timeResult").textContent =
-      "Please enter valid times.";
-
-    return;
-  }
+    const m1 =
+        parseInt(
+            document.getElementById("minutes1").value,
+            10
+        ) || 0;
 
 
-  const totalMinutes =
-    (h1 * 60) +
-    m1 +
-    (h2 * 60) +
-    m2;
+    const h2 =
+        parseInt(
+            document.getElementById("hours2").value,
+            10
+        ) || 0;
 
 
-  const totalHours =
-    Math.floor(totalMinutes / 60);
+    const m2 =
+        parseInt(
+            document.getElementById("minutes2").value,
+            10
+        ) || 0;
 
-  const remainingMinutes =
-    totalMinutes % 60;
+
+    const result =
+        document.getElementById("timeResult");
 
 
-  document.getElementById("timeResult").textContent =
-    totalHours +
-    " hours " +
-    remainingMinutes +
-    " minutes";
+    if (
+        h1 < 0 ||
+        m1 < 0 ||
+        h2 < 0 ||
+        m2 < 0
+    ) {
+
+        result.textContent =
+            "Please enter valid times.";
+
+        return;
+
+    }
+
+
+    const totalMinutes =
+        h1 * 60 +
+        m1 +
+        h2 * 60 +
+        m2;
+
+
+    const totalHours =
+        Math.floor(
+            totalMinutes / 60
+        );
+
+
+    const remainingMinutes =
+        totalMinutes % 60;
+
+
+    result.textContent =
+        totalHours +
+        " hours " +
+        remainingMinutes +
+        " minutes";
 
 }
 
 
 function resetTime() {
 
-  document.getElementById("hours1").value = "";
+    document.getElementById("hours1").value = "";
 
-  document.getElementById("minutes1").value = "";
+    document.getElementById("minutes1").value = "";
 
-  document.getElementById("hours2").value = "";
+    document.getElementById("hours2").value = "";
 
-  document.getElementById("minutes2").value = "";
+    document.getElementById("minutes2").value = "";
 
-  document.getElementById("timeResult").textContent = "";
+    document.getElementById("timeResult").textContent = "";
 
 }
 
 
-/* =========================
+/* =========================================
    SEARCH
-========================= */
+========================================= */
 
-function searchTools() {
+function normalize(text) {
 
-  const search =
-    document.getElementById("searchInput")
-      .value
-      .toLowerCase();
+    return text
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
 
-  const cards =
-    document.querySelectorAll(".tool-card");
+}
 
 
-  cards.forEach(function(card) {
+function findCalculator(query) {
 
-    const text =
-      card.innerText.toLowerCase();
+    const q =
+        normalize(query);
 
-    if (text.includes(search)) {
 
-      card.style.display = "";
+    if (!q) {
 
-    } else {
-
-      card.style.display = "none";
+        return null;
 
     }
 
-  });
+
+    /* KG / POUNDS */
+
+    if (
+
+        q.includes("kg") ||
+        q.includes("kgs") ||
+        q.includes("kilogram") ||
+        q.includes("kilograms") ||
+        q.includes("lb") ||
+        q.includes("lbs") ||
+        q.includes("pound") ||
+        q.includes("pounds") ||
+        q.includes("weight converter") ||
+        q.includes("weight conversion")
+
+    ) {
+
+        return {
+
+            panel: "kgPanel",
+
+            input: "kgInput"
+
+        };
+
+    }
+
+
+    /* LOAN */
+
+    if (
+
+        q.includes("loan") ||
+        q.includes("loans") ||
+        q.includes("monthly payment") ||
+        q.includes("loan payment") ||
+        q.includes("interest payment") ||
+        q.includes("finance")
+
+    ) {
+
+        return {
+
+            panel: "loanPanel",
+
+            input: "loanAmount"
+
+        };
+
+    }
+
+
+    /* BMI */
+
+    if (
+
+        q.includes("bmi") ||
+        q.includes("body mass index") ||
+        q.includes("body mass")
+
+    ) {
+
+        return {
+
+            panel: "bmiPanel",
+
+            input: "heightInput"
+
+        };
+
+    }
+
+
+    /* TIME */
+
+    if (
+
+        q.includes("time calculator") ||
+        q.includes("duration") ||
+        q.includes("time") ||
+        q.includes("hours") ||
+        q.includes("minutes") ||
+        q.includes("add time")
+
+    ) {
+
+        return {
+
+            panel: "timePanel",
+
+            input: "hours1"
+
+        };
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =========================================
+   SEARCH BUTTON
+========================================= */
+
+function performSearch() {
+
+    const input =
+        document.getElementById("searchInput");
+
+
+    const query =
+        input.value;
+
+
+    const found =
+        findCalculator(query);
+
+
+    if (!found) {
+
+        input.focus();
+
+        input.style.boxShadow =
+            "0 0 0 3px rgba(239,68,68,0.25)";
+
+        setTimeout(function() {
+
+            input.style.boxShadow = "";
+
+        }, 900);
+
+        return;
+
+    }
+
+
+    openCalculator(
+
+        found.panel,
+
+        found.input
+
+    );
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+function handleSearchKey(event) {
+
+    if (event.key === "Enter") {
+
+        performSearch();
+
+    }
+
+}
+
+
+/* =========================================
+   QUICK SEARCH BUTTONS
+========================================= */
+
+function quickSearch(text) {
+
+    const input =
+        document.getElementById("searchInput");
+
+
+    input.value =
+        text;
+
+
+    performSearch();
 
 }
 
