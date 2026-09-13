@@ -1,14 +1,15 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta name="google-site-verification" content="UQN2bezdAG6nGNzAndEZDceiwCG_uo4oJEUi5wHXX0o" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FreeTools Hub — Free Online Calculators & Tools</title>
+  <title>FreeTools Hub — Free Online Calculators & Tools</title>
 
-<meta name="description" content="Free online calculators and converters for loans, birthdays, age, tips, discounts, percentages, weight, temperature, time, dates and more.">
-<meta name="keywords" content="free calculator, online calculators, loan calculator, birthday calculator, age calculator, tip calculator, discount calculator, percentage calculator, kg to lbs, lbs to kg, temperature converter">
+  <meta name="description" content="Free online calculators and converters for loans, birthdays, age, tips, discounts, percentages, weight, temperature, time, dates and more.">
+  <meta name="keywords" content="free calculator, online calculators, loan calculator, birthday calculator, age calculator, tip calculator, discount calculator, percentage calculator, kg to lbs, lbs to kg, temperature converter">
 
 <style>
 *{
@@ -618,6 +619,7 @@ footer{
   gap:20px;
   color:#777983;
   font-size:12px;
+  flex-wrap:wrap;
 }
 
 .footer-links a:hover{
@@ -726,13 +728,7 @@ footer{
 </style>
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     NAVBAR
-========================= -->
 
 <nav>
   <div class="container nav-inner">
@@ -745,17 +741,11 @@ footer{
     <div class="nav-links">
       <a href="#tools">Calculators</a>
       <a href="#features">Why FreeTools</a>
-      <a href="#footer">About</a>
+      <a href="about.html">About</a>
     </div>
 
   </div>
 </nav>
-
-
-
-<!-- =========================
-     HERO
-========================= -->
 
 <main>
 
@@ -777,9 +767,6 @@ footer{
       Free calculators and useful everyday tools.
       Search for exactly what you need and get your answer instantly.
     </p>
-
-
-    <!-- SEARCH -->
 
     <div class="search-wrapper">
 
@@ -803,7 +790,6 @@ footer{
 
       </div>
 
-
       <div class="search-hint">
 
         Try
@@ -816,7 +802,6 @@ footer{
 
       </div>
 
-
       <div
         class="search-results"
         id="searchResults">
@@ -828,21 +813,11 @@ footer{
 
 </section>
 
-
-
-<!-- TOP AD -->
-
 <div class="container">
   <div class="ad-slot">
     Advertisement
   </div>
 </div>
-
-
-
-<!-- =========================
-     TOOLS
-========================= -->
 
 <section id="tools" class="container">
 
@@ -855,13 +830,7 @@ footer{
 
 </div>
 
-
 <div class="calculator-grid">
-
-
-<!-- =========================
-     KG → LBS
-========================= -->
 
 <article
   class="calculator-card"
@@ -869,14 +838,12 @@ footer{
   data-title="KG to LBS Converter">
 
   <div class="tool-top">
-
     <div class="tool-icon">⚖</div>
 
     <div>
       <div class="tool-title">KG → LBS</div>
       <div class="tool-subtitle">Weight converter</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -884,9 +851,7 @@ footer{
     <input id="kgInput" type="number" placeholder="e.g. 55">
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="convertKg()">
+  <button class="calculate-btn" onclick="convertKg()">
     Convert
   </button>
 
@@ -900,26 +865,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     LBS → KG
-========================= -->
-
 <article
   class="calculator-card"
   id="lbs-kg"
   data-title="LBS to KG Converter">
 
   <div class="tool-top">
-
     <div class="tool-icon">⚖</div>
 
     <div>
       <div class="tool-title">LBS → KG</div>
       <div class="tool-subtitle">Weight converter</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -927,9 +884,7 @@ footer{
     <input id="lbsInput" type="number" placeholder="e.g. 150">
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="convertLbs()">
+  <button class="calculate-btn" onclick="convertLbs()">
     Convert
   </button>
 
@@ -943,26 +898,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     LOAN
-========================= -->
-
 <article
   class="calculator-card"
   id="loan"
   data-title="Loan Payment Calculator">
 
   <div class="tool-top">
-
     <div class="tool-icon">💰</div>
 
     <div>
       <div class="tool-title">Loan Calculator</div>
       <div class="tool-subtitle">Monthly payment</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -980,9 +927,7 @@ footer{
     <input id="loanYears" type="number" placeholder="e.g. 5">
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="calculateLoan()">
+  <button class="calculate-btn" onclick="calculateLoan()">
     Calculate Payment
   </button>
 
@@ -996,26 +941,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     BMI
-========================= -->
-
 <article
   class="calculator-card"
   id="bmi"
   data-title="BMI Calculator">
 
   <div class="tool-top">
-
     <div class="tool-icon">📊</div>
 
     <div>
       <div class="tool-title">BMI Calculator</div>
       <div class="tool-subtitle">Body mass index</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -1028,9 +965,7 @@ footer{
     <input id="bmiHeight" type="number" placeholder="e.g. 175">
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="calculateBMI()">
+  <button class="calculate-btn" onclick="calculateBMI()">
     Calculate BMI
   </button>
 
@@ -1044,26 +979,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     AGE
-========================= -->
-
 <article
   class="calculator-card"
   id="age"
   data-title="Age Calculator">
 
   <div class="tool-top">
-
     <div class="tool-icon">🎂</div>
 
     <div>
       <div class="tool-title">Age Calculator</div>
       <div class="tool-subtitle">Calculate your age</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -1071,9 +998,7 @@ footer{
     <input id="ageBirthDate" type="date">
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="calculateAge()">
+  <button class="calculate-btn" onclick="calculateAge()">
     Calculate Age
   </button>
 
@@ -1087,26 +1012,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     BIRTHDAY
-========================= -->
-
 <article
   class="calculator-card"
   id="birthday"
   data-title="Birthday Calculator">
 
   <div class="tool-top">
-
     <div class="tool-icon">🎉</div>
 
     <div>
       <div class="tool-title">Birthday Calculator</div>
       <div class="tool-subtitle">Find your next birthday</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -1114,9 +1031,7 @@ footer{
     <input id="birthdayDate" type="date">
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="calculateBirthday()">
+  <button class="calculate-btn" onclick="calculateBirthday()">
     Find Birthday
   </button>
 
@@ -1130,26 +1045,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     TIP
-========================= -->
-
 <article
   class="calculator-card"
   id="tip"
   data-title="Tip Calculator">
 
   <div class="tool-top">
-
     <div class="tool-icon">🍽</div>
 
     <div>
       <div class="tool-title">Tip Calculator</div>
       <div class="tool-subtitle">Restaurant tip</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -1162,9 +1069,7 @@ footer{
     <input id="tipPercent" type="number" placeholder="e.g. 20">
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="calculateTip()">
+  <button class="calculate-btn" onclick="calculateTip()">
     Calculate
   </button>
 
@@ -1178,26 +1083,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     DISCOUNT
-========================= -->
-
 <article
   class="calculator-card"
   id="discount"
   data-title="Discount Calculator">
 
   <div class="tool-top">
-
     <div class="tool-icon">🏷</div>
 
     <div>
       <div class="tool-title">Discount Calculator</div>
       <div class="tool-subtitle">Sale price & savings</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -1210,9 +1107,7 @@ footer{
     <input id="discountPercent" type="number" placeholder="e.g. 25">
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="calculateDiscount()">
+  <button class="calculate-btn" onclick="calculateDiscount()">
     Calculate
   </button>
 
@@ -1226,26 +1121,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     PERCENTAGE
-========================= -->
-
 <article
   class="calculator-card"
   id="percentage"
   data-title="Percentage Calculator">
 
   <div class="tool-top">
-
     <div class="tool-icon">％</div>
 
     <div>
       <div class="tool-title">Percentage</div>
       <div class="tool-subtitle">Find percentages</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -1258,9 +1145,7 @@ footer{
     <input id="percentNumber" type="number" placeholder="e.g. 250">
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="calculatePercentage()">
+  <button class="calculate-btn" onclick="calculatePercentage()">
     Calculate
   </button>
 
@@ -1274,26 +1159,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     TEMPERATURE
-========================= -->
-
 <article
   class="calculator-card"
   id="temperature"
   data-title="Temperature Converter">
 
   <div class="tool-top">
-
     <div class="tool-icon">🌡</div>
 
     <div>
       <div class="tool-title">Temperature</div>
       <div class="tool-subtitle">Celsius & Fahrenheit</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -1311,9 +1188,7 @@ footer{
 
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="convertTemperature()">
+  <button class="calculate-btn" onclick="convertTemperature()">
     Convert
   </button>
 
@@ -1327,26 +1202,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     LENGTH
-========================= -->
-
 <article
   class="calculator-card"
   id="length"
   data-title="Length Converter">
 
   <div class="tool-top">
-
     <div class="tool-icon">📏</div>
 
     <div>
       <div class="tool-title">Length Converter</div>
       <div class="tool-subtitle">Feet, meters, inches & cm</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -1358,19 +1225,15 @@ footer{
     <label>Convert From</label>
 
     <select id="lengthUnit">
-
       <option value="ft">Feet</option>
       <option value="m">Meters</option>
       <option value="in">Inches</option>
       <option value="cm">Centimeters</option>
-
     </select>
 
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="convertLength()">
+  <button class="calculate-btn" onclick="convertLength()">
     Convert
   </button>
 
@@ -1384,26 +1247,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     TIME
-========================= -->
-
 <article
   class="calculator-card"
   id="time"
   data-title="Time Calculator">
 
   <div class="tool-top">
-
     <div class="tool-icon">⏱</div>
 
     <div>
       <div class="tool-title">Time Calculator</div>
       <div class="tool-subtitle">Add hours & minutes</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -1421,9 +1276,7 @@ footer{
     <input id="timeExtra" type="number" placeholder="e.g. 30">
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="calculateTime()">
+  <button class="calculate-btn" onclick="calculateTime()">
     Calculate Time
   </button>
 
@@ -1437,26 +1290,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     BASIC CALCULATOR
-========================= -->
-
 <article
   class="calculator-card"
   id="calculator"
   data-title="Basic Calculator">
 
   <div class="tool-top">
-
     <div class="tool-icon">➗</div>
 
     <div>
       <div class="tool-title">Basic Calculator</div>
       <div class="tool-subtitle">Quick everyday math</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -1473,19 +1318,15 @@ footer{
     <label>Operation</label>
 
     <select id="basicOperation">
-
       <option value="+">Addition (+)</option>
       <option value="-">Subtraction (-)</option>
       <option value="*">Multiplication (×)</option>
       <option value="/">Division (÷)</option>
-
     </select>
 
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="basicCalculate()">
+  <button class="calculate-btn" onclick="basicCalculate()">
     Calculate
   </button>
 
@@ -1499,26 +1340,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     DATE DIFFERENCE
-========================= -->
-
 <article
   class="calculator-card"
   id="date-difference"
   data-title="Date Difference Calculator">
 
   <div class="tool-top">
-
     <div class="tool-icon">📅</div>
 
     <div>
       <div class="tool-title">Date Difference</div>
       <div class="tool-subtitle">Days between two dates</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -1531,9 +1364,7 @@ footer{
     <input id="dateEnd" type="date">
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="calculateDateDifference()">
+  <button class="calculate-btn" onclick="calculateDateDifference()">
     Calculate
   </button>
 
@@ -1547,26 +1378,18 @@ footer{
 
 </article>
 
-
-
-<!-- =========================
-     SPLIT BILL
-========================= -->
-
 <article
   class="calculator-card"
   id="split-bill"
   data-title="Split Bill Calculator">
 
   <div class="tool-top">
-
     <div class="tool-icon">👥</div>
 
     <div>
       <div class="tool-title">Split Bill</div>
       <div class="tool-subtitle">Split a bill between people</div>
     </div>
-
   </div>
 
   <div class="field">
@@ -1584,9 +1407,7 @@ footer{
     <input id="splitTip" type="number" placeholder="e.g. 20">
   </div>
 
-  <button
-    class="calculate-btn"
-    onclick="calculateSplitBill()">
+  <button class="calculate-btn" onclick="calculateSplitBill()">
     Split Bill
   </button>
 
@@ -1600,28 +1421,15 @@ footer{
 
 </article>
 
-
 </div>
 
 </section>
 
-
-
-<!-- MIDDLE AD -->
-
 <div class="container">
-
   <div class="ad-slot">
     Advertisement
   </div>
-
 </div>
-
-
-
-<!-- =========================
-     FEATURES
-========================= -->
 
 <section id="features" class="container">
 
@@ -1634,70 +1442,43 @@ footer{
 
   </div>
 
-
   <div class="features">
 
     <div class="feature">
-
       <div class="feature-icon">⚡</div>
-
       <h3>Instant Results</h3>
-
       <p>
         Calculate answers instantly without creating an account.
       </p>
-
     </div>
 
-
     <div class="feature">
-
       <div class="feature-icon">🔒</div>
-
       <h3>Simple & Private</h3>
-
       <p>
         Everyday calculations happen directly in your browser.
       </p>
-
     </div>
 
-
     <div class="feature">
-
       <div class="feature-icon">📱</div>
-
       <h3>Works Everywhere</h3>
-
       <p>
         Designed for phones, tablets, laptops and desktop computers.
       </p>
-
     </div>
 
   </div>
 
 </section>
 
-
-
-<!-- BOTTOM AD -->
-
 <div class="container">
-
   <div class="ad-slot">
     Advertisement
   </div>
-
 </div>
 
 </main>
-
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer id="footer">
 
@@ -1708,8 +1489,11 @@ footer{
     </div>
 
     <div class="footer-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
       <a href="#tools">Calculators</a>
     </div>
 
@@ -1717,14 +1501,9 @@ footer{
 
 </footer>
 
-
-
 <script>
 
-
-/* =========================
-   KG → LBS
-========================= */
+/* KG → LBS */
 
 function convertKg(){
 
@@ -1735,9 +1514,7 @@ function convertKg(){
   const result=document.getElementById("kgResult");
 
   if(isNaN(kg)||kg<0){
-
     result.textContent="Please enter a valid weight.";
-
     return;
   }
 
@@ -1748,10 +1525,7 @@ function convertKg(){
 }
 
 
-
-/* =========================
-   LBS → KG
-========================= */
+/* LBS → KG */
 
 function convertLbs(){
 
@@ -1762,9 +1536,7 @@ function convertLbs(){
   const result=document.getElementById("lbsResult");
 
   if(isNaN(lbs)||lbs<0){
-
     result.textContent="Please enter a valid weight.";
-
     return;
   }
 
@@ -1775,10 +1547,7 @@ function convertLbs(){
 }
 
 
-
-/* =========================
-   LOAN
-========================= */
+/* LOAN */
 
 function calculateLoan(){
 
@@ -1804,32 +1573,24 @@ function calculateLoan(){
     annualRate<0||
     years<=0
   ){
-
     result.textContent=
       "Please enter valid loan information.";
-
     return;
   }
 
   const months=years*12;
-
-  const monthlyRate=
-    annualRate/100/12;
+  const monthlyRate=annualRate/100/12;
 
   let payment;
 
   if(monthlyRate===0){
-
     payment=amount/months;
-
   }else{
-
     payment=
       amount*
       monthlyRate*
       Math.pow(1+monthlyRate,months)/
       (Math.pow(1+monthlyRate,months)-1);
-
   }
 
   result.textContent=
@@ -1840,10 +1601,7 @@ function calculateLoan(){
 }
 
 
-
-/* =========================
-   BMI
-========================= */
+/* BMI */
 
 function calculateBMI(){
 
@@ -1863,27 +1621,20 @@ function calculateBMI(){
     weight<=0||
     height<=0
   ){
-
     result.textContent=
       "Please enter valid height and weight.";
-
     return;
   }
 
   const meters=height/100;
-
-  const bmi=
-    weight/(meters*meters);
+  const bmi=weight/(meters*meters);
 
   result.textContent=
     `BMI: ${bmi.toFixed(2)}`;
 }
 
 
-
-/* =========================
-   AGE
-========================= */
+/* AGE */
 
 function calculateAge(){
 
@@ -1894,10 +1645,8 @@ function calculateAge(){
     document.getElementById("ageResult");
 
   if(!value){
-
     result.textContent=
       "Please select your birth date.";
-
     return;
   }
 
@@ -1908,10 +1657,8 @@ function calculateAge(){
     new Date();
 
   if(birth>today){
-
     result.textContent=
       "Birth date cannot be in the future.";
-
     return;
   }
 
@@ -1953,10 +1700,7 @@ function calculateAge(){
 }
 
 
-
-/* =========================
-   BIRTHDAY
-========================= */
+/* BIRTHDAY */
 
 function calculateBirthday(){
 
@@ -1967,10 +1711,8 @@ function calculateBirthday(){
     document.getElementById("birthdayResult");
 
   if(!value){
-
     result.textContent=
       "Please select your birth date.";
-
     return;
   }
 
@@ -1981,10 +1723,8 @@ function calculateBirthday(){
     new Date();
 
   if(birth>today){
-
     result.textContent=
       "Birth date cannot be in the future.";
-
     return;
   }
 
@@ -2034,10 +1774,7 @@ function calculateBirthday(){
 }
 
 
-
-/* =========================
-   TIP
-========================= */
+/* TIP */
 
 function calculateTip(){
 
@@ -2058,28 +1795,20 @@ function calculateTip(){
     bill<0||
     percent<0
   ){
-
     result.textContent=
       "Please enter valid values.";
-
     return;
   }
 
-  const tip=
-    bill*percent/100;
-
-  const total=
-    bill+tip;
+  const tip=bill*percent/100;
+  const total=bill+tip;
 
   result.textContent=
     `Tip: $${tip.toFixed(2)} • Total: $${total.toFixed(2)}`;
 }
 
 
-
-/* =========================
-   DISCOUNT
-========================= */
+/* DISCOUNT */
 
 function calculateDiscount(){
 
@@ -2100,28 +1829,20 @@ function calculateDiscount(){
     price<0||
     discount<0
   ){
-
     result.textContent=
       "Please enter valid values.";
-
     return;
   }
 
-  const savings=
-    price*discount/100;
-
-  const finalPrice=
-    price-savings;
+  const savings=price*discount/100;
+  const finalPrice=price-savings;
 
   result.textContent=
     `Save $${savings.toFixed(2)} • Final price: $${finalPrice.toFixed(2)}`;
 }
 
 
-
-/* =========================
-   PERCENTAGE
-========================= */
+/* PERCENTAGE */
 
 function calculatePercentage(){
 
@@ -2140,10 +1861,8 @@ function calculatePercentage(){
     isNaN(percentage)||
     isNaN(number)
   ){
-
     result.textContent=
       "Please enter valid numbers.";
-
     return;
   }
 
@@ -2155,10 +1874,7 @@ function calculatePercentage(){
 }
 
 
-
-/* =========================
-   TEMPERATURE
-========================= */
+/* TEMPERATURE */
 
 function convertTemperature(){
 
@@ -2173,25 +1889,21 @@ function convertTemperature(){
     document.getElementById("tempResult");
 
   if(isNaN(value)){
-
     result.textContent=
       "Please enter a temperature.";
-
     return;
   }
 
   if(unit==="f"){
 
-    const c=
-      (value-32)*5/9;
+    const c=(value-32)*5/9;
 
     result.textContent=
       `${value}°F = ${c.toFixed(2)}°C`;
 
   }else{
 
-    const f=
-      value*9/5+32;
+    const f=value*9/5+32;
 
     result.textContent=
       `${value}°C = ${f.toFixed(2)}°F`;
@@ -2200,10 +1912,7 @@ function convertTemperature(){
 }
 
 
-
-/* =========================
-   LENGTH
-========================= */
+/* LENGTH */
 
 function convertLength(){
 
@@ -2218,10 +1927,8 @@ function convertLength(){
     document.getElementById("lengthResult");
 
   if(isNaN(value)){
-
     result.textContent=
       "Please enter a length.";
-
     return;
   }
 
@@ -2244,10 +1951,7 @@ function convertLength(){
 }
 
 
-
-/* =========================
-   TIME
-========================= */
+/* TIME */
 
 function calculateTime(){
 
@@ -2274,10 +1978,8 @@ function calculateTime(){
     minutes<0||
     extra<0
   ){
-
     result.textContent=
       "Please enter positive values.";
-
     return;
   }
 
@@ -2297,10 +1999,7 @@ function calculateTime(){
 }
 
 
-
-/* =========================
-   BASIC CALCULATOR
-========================= */
+/* BASIC CALCULATOR */
 
 function basicCalculate(){
 
@@ -2319,10 +2018,8 @@ function basicCalculate(){
     document.getElementById("basicResult");
 
   if(isNaN(a)||isNaN(b)){
-
     result.textContent=
       "Please enter both numbers.";
-
     return;
   }
 
@@ -2340,10 +2037,8 @@ function basicCalculate(){
   if(operation==="/"){
 
     if(b===0){
-
       result.textContent=
         "Cannot divide by zero.";
-
       return;
     }
 
@@ -2355,10 +2050,7 @@ function basicCalculate(){
 }
 
 
-
-/* =========================
-   DATE DIFFERENCE
-========================= */
+/* DATE DIFFERENCE */
 
 function calculateDateDifference(){
 
@@ -2372,10 +2064,8 @@ function calculateDateDifference(){
     document.getElementById("dateResult");
 
   if(!startValue||!endValue){
-
     result.textContent=
       "Please select both dates.";
-
     return;
   }
 
@@ -2400,10 +2090,7 @@ function calculateDateDifference(){
 }
 
 
-
-/* =========================
-   SPLIT BILL
-========================= */
+/* SPLIT BILL */
 
 function calculateSplitBill(){
 
@@ -2430,10 +2117,8 @@ function calculateSplitBill(){
     people<=0||
     tip<0
   ){
-
     result.textContent=
       "Please enter valid values.";
-
     return;
   }
 
@@ -2451,10 +2136,7 @@ function calculateSplitBill(){
 }
 
 
-
-/* =========================
-   SMART SEARCH DATABASE
-========================= */
+/* SMART SEARCH DATABASE */
 
 const calculators=[
 
@@ -2673,10 +2355,7 @@ const calculators=[
 ];
 
 
-
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
 const searchInput=
   document.getElementById("toolSearch");
@@ -2713,7 +2392,6 @@ function searchTools(query){
       const keywords=
         tool.keywords.join(" ").toLowerCase();
 
-
       if(title===query)
         score+=150;
 
@@ -2725,7 +2403,6 @@ function searchTools(query){
 
       if(description.includes(query))
         score+=25;
-
 
       words.forEach(word=>{
 
@@ -2743,7 +2420,6 @@ function searchTools(query){
 
       });
 
-
       return{
         ...tool,
         score
@@ -2759,7 +2435,6 @@ function searchTools(query){
 }
 
 
-
 function showSearchResults(){
 
   const query=
@@ -2768,16 +2443,12 @@ function showSearchResults(){
   searchResults.innerHTML="";
 
   if(!query){
-
     searchResults.classList.remove("show");
-
     return;
   }
 
-
   const matches=
     searchTools(query);
-
 
   if(matches.length===0){
 
@@ -2807,7 +2478,6 @@ function showSearchResults(){
 
     return;
   }
-
 
   matches
     .slice(0,6)
@@ -2839,7 +2509,6 @@ function showSearchResults(){
 
       `;
 
-
       button.addEventListener(
         "click",
         ()=>{
@@ -2847,15 +2516,12 @@ function showSearchResults(){
         }
       );
 
-
       searchResults.appendChild(button);
 
     });
 
-
   searchResults.classList.add("show");
 }
-
 
 
 function openCalculator(id){
@@ -2873,13 +2539,11 @@ function openCalculator(id){
     block:"center"
   });
 
-
   card.classList.remove("highlight");
 
   void card.offsetWidth;
 
   card.classList.add("highlight");
-
 
   setTimeout(
     ()=>{
@@ -2888,7 +2552,6 @@ function openCalculator(id){
     1400
   );
 }
-
 
 
 function performSearch(){
@@ -2906,7 +2569,6 @@ function performSearch(){
 
   }
 }
-
 
 
 searchInput.addEventListener(
@@ -2935,10 +2597,7 @@ searchButton.addEventListener(
 );
 
 
-
-/* =========================
-   SEARCH EXAMPLES
-========================= */
+/* SEARCH EXAMPLES */
 
 document
   .querySelectorAll(".search-hint kbd")
@@ -2961,10 +2620,7 @@ document
   });
 
 
-
-/* =========================
-   CLOSE SEARCH
-========================= */
+/* CLOSE SEARCH */
 
 document.addEventListener(
   "click",
@@ -2985,3 +2641,4 @@ document.addEventListener(
 
 </body>
 </html>
+```
